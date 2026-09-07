@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const fadeInUp = {
@@ -10,134 +10,69 @@ const fadeInUp = {
   transition: { duration: 0.6, ease: "easeOut" },
 };
 
-// Thanos Disintegration Dust Canvas Component
-function DisintegrationOverlay({ onReset }: { onReset: () => void }) {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+// Smooth Bottom-to-Top Vanishing Wave & Scroll Up Component
+function SmoothDisintegrationOverlay({ onReset }: { onReset: () => void }) {
+  const [fullyVanished, setFullyVanished] = useState(false);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    // Smoothly scroll to top as the bottom-to-top wipe happens
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    const timer = setTimeout(() => {
+      setFullyVanished(true);
+    }, 1800);
 
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
-    window.addEventListener("resize", handleResize);
-
-    // Generate thousands of dust particles
-    const particleCount = 8000;
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      color: string;
-      alpha: number;
-      decay: number;
-    }> = [];
-
-    const colors = ["#ef4444", "#dc2626", "#991b1b", "#ffffff", "#f59e0b", "#3b82f6", "#06b6d4"];
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 6 + 3.5, // Rightward Thanos drift
-        vy: (Math.random() - 0.5) * 4 - 2, // Upward drift
-        size: Math.random() * 2.8 + 0.5,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        alpha: Math.random() * 0.95 + 0.05,
-        decay: Math.random() * 0.007 + 0.002,
-      });
-    }
-
-    let animationFrameId: number;
-
-    const render = () => {
-      ctx.fillStyle = "rgba(8, 8, 8, 0.25)";
-      ctx.fillRect(0, 0, width, height);
-
-      let aliveCount = 0;
-
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        if (p.alpha > 0) {
-          aliveCount++;
-          p.x += p.vx;
-          p.y += p.vy;
-          p.alpha -= p.decay;
-
-          ctx.save();
-          ctx.globalAlpha = Math.max(0, p.alpha);
-          ctx.fillStyle = p.color;
-          ctx.shadowBlur = 6;
-          ctx.shadowColor = p.color;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.restore();
-        }
-      }
-
-      if (aliveCount > 100) {
-        animationFrameId = requestAnimationFrame(render);
-      }
-    };
-
-    render();
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[9999] bg-[#080808] flex flex-col items-center justify-center p-6 text-[#ded8ce] font-mono overflow-hidden backdrop-blur-3xl"
-    >
-      <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-10" />
-
-      {/* Disintegration Alert Modal */}
+    <div className="fixed inset-0 z-[9999] pointer-events-auto flex flex-col justify-between overflow-hidden">
+      {/* Smooth Bottom-to-Top Dissolve Mask */}
       <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.4, duration: 0.8 }}
-        className="relative z-20 max-w-xl w-full p-8 bg-[#12110f]/90 border border-red-500/60 rounded-xs shadow-[0_0_60px_rgba(239,68,68,0.4)] backdrop-blur-xl text-center space-y-6"
+        initial={{ clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)", opacity: 0 }}
+        animate={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", opacity: 1 }}
+        transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute inset-0 bg-[#070707] z-10 flex flex-col items-center justify-center p-6 text-[#ded8ce] font-mono"
       >
-        <div className="flex items-center justify-center gap-3 text-red-500 font-bold tracking-widest text-sm uppercase">
-          <span className="w-3.5 h-3.5 rounded-full bg-red-500 animate-ping" />
-          <span>[SYSTEM PROTOCOL // MATRIX DISSOLVED]</span>
-        </div>
+        {/* Ambient Red Glow background */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.15),transparent_70%)] pointer-events-none" />
 
-        <h2 className="text-2xl sm:text-4xl font-serif text-white font-light tracking-wide">
-          "The Matrix has turned to dust."
-        </h2>
+        {/* Once fully vanished from bottom to top, show the See You Later popup */}
+        <AnimatePresence>
+          {fullyVanished && (
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="relative z-20 max-w-lg w-full p-8 bg-[#100c0c] border border-red-500/60 rounded-xs shadow-[0_0_80px_rgba(239,68,68,0.35)] text-center space-y-6 backdrop-blur-2xl"
+            >
+              <div className="flex items-center justify-center gap-3 text-red-500 font-bold tracking-widest text-xs uppercase">
+                <span className="w-3 h-3 rounded-full bg-red-500 animate-ping" />
+                <span>[MATRIX PROTOCOL // SESSION TERMINATED]</span>
+              </div>
 
-        <p className="text-xs text-[#a8a295] leading-relaxed font-sans">
-          You chose the Red Pill. The web dossier has disintegrated into ash. See you later, Architect.
-        </p>
+              <h2 className="text-4xl sm:text-5xl font-serif text-white font-light tracking-wider uppercase">
+                See You Later.
+              </h2>
 
-        <div className="pt-4 border-t border-[#292420] flex justify-center">
-          <button
-            onClick={onReset}
-            className="px-6 py-3.5 bg-red-600 hover:bg-red-500 text-white text-xs font-bold uppercase tracking-widest rounded-xs shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2"
-          >
-            <span>⚡ REBOOT MATRIX &amp; RESTORE WEBSITE</span>
-          </button>
-        </div>
+              <p className="text-xs text-[#a8a295] leading-relaxed font-sans">
+                You took the Red Pill. The entire webpage has vanished from bottom to top.
+              </p>
+
+              <div className="pt-4 border-t border-[#2a1c1c] flex justify-center">
+                <button
+                  onClick={onReset}
+                  className="px-6 py-3.5 bg-red-600 hover:bg-red-500 text-white text-xs font-bold uppercase tracking-widest rounded-xs shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2"
+                >
+                  <span>⚡ REBOOT MATRIX &amp; RESTORE</span>
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -270,10 +205,10 @@ export function Contact() {
       id="contact"
       className="relative w-full bg-[#050505] text-[#ded8ce] py-12 border-t border-[#1c1b19] overflow-hidden min-h-screen flex flex-col justify-center items-center px-0"
     >
-      {/* Thanos Disintegration Overlay if Red Pill Chosen */}
+      {/* Smooth Bottom-to-Top Vanishing Overlay if Red Pill Chosen */}
       <AnimatePresence>
         {pillChosen === "red" && (
-          <DisintegrationOverlay onReset={() => setPillChosen(null)} />
+          <SmoothDisintegrationOverlay onReset={() => setPillChosen(null)} />
         )}
       </AnimatePresence>
 
@@ -305,7 +240,7 @@ export function Contact() {
           </div>
         </motion.div>
 
-        {/* 100% FULL-WIDTH STAGE FOR THE ROBOT & PILLS */}
+        {/* 100% EDGE-TO-EDGE FULL WIDTH STAGE FOR THE ROBOT & PILLS */}
         <motion.div
           {...fadeInUp}
           className="relative w-full px-0 mx-auto flex justify-center items-center overflow-hidden"
@@ -319,19 +254,19 @@ export function Contact() {
               className="w-full h-auto object-cover block min-w-full max-h-[88vh] mx-auto filter contrast-110 brightness-95"
             />
 
-            {/* BLUE PILL ANIMATED CLICK HOTSPOT (Positioned EXACTLY on top of the Blue Pill in hand) */}
-            <div className="absolute left-[24.5%] top-[66%] -translate-x-1/2 -translate-y-1/2 z-30">
+            {/* BLUE PILL ANIMATED CLICK HOTSPOT (Positioned EXACTLY over the Blue Pill in hand) */}
+            <div className="absolute left-[25.2%] top-[67.2%] -translate-x-1/2 -translate-y-1/2 z-30">
               <button
                 onClick={() => setPillChosen("blue")}
-                className="relative group/pill flex items-center justify-center cursor-pointer p-4 focus:outline-none"
+                className="relative group/pill flex items-center justify-center cursor-pointer p-2 focus:outline-none"
                 title="Click Blue Pill to Contact Me"
               >
-                {/* Glowing Pulse Halo centered precisely on hand pill */}
-                <span className="absolute w-14 sm:w-20 h-7 sm:h-10 rounded-full bg-cyan-400/60 blur-md animate-ping pointer-events-none" />
-                <span className="absolute w-18 sm:w-24 h-9 sm:h-12 rounded-full bg-blue-500/50 blur-lg animate-pulse pointer-events-none" />
+                {/* Seamless Glow aura directly over the pill in hand - NO mismatching outer ring */}
+                <span className="absolute w-12 sm:w-16 h-6 sm:h-8 rounded-full bg-cyan-400/70 blur-md animate-pulse pointer-events-none group-hover/pill:scale-125 transition-transform" />
+                <span className="absolute w-16 sm:w-20 h-8 sm:h-10 rounded-full bg-blue-500/40 blur-lg animate-ping pointer-events-none" />
 
                 {/* Hotspot Target Box over image pill */}
-                <span className="w-12 sm:w-18 h-5 sm:h-8 rounded-full border-2 border-cyan-300 shadow-[0_0_35px_#06b6d4] group-hover/pill:scale-130 transition-transform duration-300 flex items-center justify-center bg-cyan-400/20" />
+                <span className="w-10 sm:w-16 h-5 sm:h-7 rounded-full group-hover/pill:scale-125 transition-transform duration-300 flex items-center justify-center" />
 
                 {/* Hover Tooltip Badge */}
                 <span className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 bg-[#090909]/95 border border-cyan-400 text-cyan-300 text-[10px] sm:text-xs font-mono tracking-widest uppercase rounded-xs shadow-2xl opacity-0 group-hover/pill:opacity-100 transition-opacity duration-300 pointer-events-none">
@@ -340,19 +275,19 @@ export function Contact() {
               </button>
             </div>
 
-            {/* RED PILL ANIMATED CLICK HOTSPOT (Positioned EXACTLY on top of the Red Pill in hand) */}
-            <div className="absolute left-[75.5%] top-[66%] -translate-x-1/2 -translate-y-1/2 z-30">
+            {/* RED PILL ANIMATED CLICK HOTSPOT (Positioned EXACTLY over the Red Pill in hand) */}
+            <div className="absolute left-[74.8%] top-[67.2%] -translate-x-1/2 -translate-y-1/2 z-30">
               <button
                 onClick={() => setPillChosen("red")}
-                className="relative group/pill flex items-center justify-center cursor-pointer p-4 focus:outline-none"
+                className="relative group/pill flex items-center justify-center cursor-pointer p-2 focus:outline-none"
                 title="Click Red Pill to Disintegrate Matrix"
               >
-                {/* Glowing Pulse Halo centered precisely on hand pill */}
-                <span className="absolute w-14 sm:w-20 h-7 sm:h-10 rounded-full bg-red-500/60 blur-md animate-ping pointer-events-none" />
-                <span className="absolute w-18 sm:w-24 h-9 sm:h-12 rounded-full bg-red-600/50 blur-lg animate-pulse pointer-events-none" />
+                {/* Seamless Glow aura directly over the pill in hand - NO mismatching outer ring */}
+                <span className="absolute w-12 sm:w-16 h-6 sm:h-8 rounded-full bg-red-500/70 blur-md animate-pulse pointer-events-none group-hover/pill:scale-125 transition-transform" />
+                <span className="absolute w-16 sm:w-20 h-8 sm:h-10 rounded-full bg-red-600/40 blur-lg animate-ping pointer-events-none" />
 
                 {/* Hotspot Target Box over image pill */}
-                <span className="w-12 sm:w-18 h-5 sm:h-8 rounded-full border-2 border-red-400 shadow-[0_0_35px_#ef4444] group-hover/pill:scale-130 transition-transform duration-300 flex items-center justify-center bg-red-500/20" />
+                <span className="w-10 sm:w-16 h-5 sm:h-7 rounded-full group-hover/pill:scale-125 transition-transform duration-300 flex items-center justify-center" />
 
                 {/* Hover Tooltip Badge */}
                 <span className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 bg-[#090909]/95 border border-red-500 text-red-300 text-[10px] sm:text-xs font-mono tracking-widest uppercase rounded-xs shadow-2xl opacity-0 group-hover/pill:opacity-100 transition-opacity duration-300 pointer-events-none">
@@ -361,7 +296,7 @@ export function Contact() {
               </button>
             </div>
 
-            {/* CLICKABLE REGIONS OVER ENTIRE LEFT / RIGHT SIDES OF THE IMAGE */}
+            {/* CLICKABLE REGIONS OVER LEFT / RIGHT SIDES OF THE IMAGE */}
             <div 
               onClick={() => setPillChosen("blue")}
               className="absolute left-0 top-0 w-1/2 h-full z-20 cursor-pointer"
