@@ -1,5 +1,8 @@
-import { motion } from 'framer-motion'
-import heroCutout from '@/assets/hero-cutout-new.png.asset.json'
+"use client";
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import heroCutout from "@/assets/hero-cutout-new.png.asset.json";
 
 const container = {
   hidden: { opacity: 1 },
@@ -10,12 +13,12 @@ const container = {
       delayChildren: custom.delay ?? 0,
     },
   }),
-}
+};
 
 const letter = {
   hidden: { opacity: 0, y: 10 },
   visible: { opacity: 1, y: 0 },
-}
+};
 
 function TypewriterLine({
   text,
@@ -23,10 +26,10 @@ function TypewriterLine({
   delay = 0,
   stagger = 0.08,
 }: {
-  text: string
-  className?: string
-  delay?: number
-  stagger?: number
+  text: string;
+  className?: string;
+  delay?: number;
+  stagger?: number;
 }) {
   return (
     <motion.span
@@ -36,20 +39,75 @@ function TypewriterLine({
       custom={{ delay, stagger }}
       className={`block ${className}`}
     >
-      {text.split('').map((char, i) => (
+      {text.split("").map((char, i) => (
         <motion.span key={`${char}-${i}`} variants={letter} className="inline-block">
-          {char === ' ' ? '\u00A0' : char}
+          {char === " " ? "\u00A0" : char}
         </motion.span>
       ))}
     </motion.span>
-  )
+  );
 }
 
 export function Hero() {
+  const [mousePos, setMousePos] = useState({ x: -500, y: -500 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-neutral-950">
-      {/* Giant text behind the portrait */}
-      <div className="absolute inset-0 z-0 flex flex-col justify-center items-start pl-4 pr-4 md:pl-8 md:pr-0 lg:pl-16 pointer-events-auto">
+    <section
+      onMouseMove={handleMouseMove}
+      className="relative h-screen w-full overflow-hidden bg-neutral-950 flex flex-col justify-center"
+    >
+      {/* 1. BACKGROUND SPOTLIGHT TYPOGRAPHY LAYER (z-index: 0 & z-1) */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center select-none pointer-events-none overflow-hidden">
+        {/* Base Text Layer: Faint Blacked Out */}
+        <span
+          className="font-mono uppercase text-center font-black tracking-tighter opacity-100"
+          style={{
+            fontSize: "clamp(6rem, 18vw, 22rem)",
+            fontWeight: 900,
+            lineHeight: 0.8,
+            color: "rgba(255, 255, 255, 0.03)",
+            userSelect: "none",
+            pointerEvents: "none",
+          }}
+        >
+          PORTFOLIO
+        </span>
+      </div>
+
+      {/* Revealed Text Layer with Dynamic Radial Spotlight Mask */}
+      <div
+        className="absolute inset-0 z-[1] flex items-center justify-center select-none pointer-events-none overflow-hidden"
+        style={{
+          WebkitMaskImage: `radial-gradient(circle 220px at ${mousePos.x}px ${mousePos.y}px, black 25%, transparent 100%)`,
+          maskImage: `radial-gradient(circle 220px at ${mousePos.x}px ${mousePos.y}px, black 25%, transparent 100%)`,
+        }}
+      >
+        <span
+          className="font-mono uppercase text-center font-black tracking-tighter"
+          style={{
+            fontSize: "clamp(6rem, 18vw, 22rem)",
+            fontWeight: 900,
+            lineHeight: 0.8,
+            color: "rgba(255, 255, 255, 0.35)",
+            textShadow: "0 0 35px rgba(255, 255, 255, 0.3)",
+            userSelect: "none",
+            pointerEvents: "none",
+          }}
+        >
+          PORTFOLIO
+        </span>
+      </div>
+
+      {/* 2. MAIN HERO FOREGROUND CONTENT LAYER (z-index: 10) */}
+      <div className="absolute inset-0 z-10 flex flex-col justify-center items-start pl-4 pr-4 md:pl-8 md:pr-0 lg:pl-16 pointer-events-auto">
         <div className="w-full max-w-[95%] md:max-w-[60%] lg:max-w-[70%]">
           <h1 className="font-display leading-[0.85] tracking-tight text-left select-none">
             <TypewriterLine
@@ -64,7 +122,7 @@ export function Hero() {
               initial={{ opacity: 0, scale: 2.5, y: -40, rotate: -8 }}
               animate={{ opacity: 1, scale: 1, y: 0, rotate: 0 }}
               transition={{
-                type: 'spring',
+                type: "spring",
                 stiffness: 260,
                 damping: 14,
                 delay: 1.4,
@@ -101,13 +159,13 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Cutout portrait in front of the text */}
+      {/* Cutout portrait in front of the text (z-index: 10) */}
       <div className="absolute right-0 top-24 bottom-0 z-10 flex items-end justify-end w-[65%] md:w-[38%] lg:w-[40%] pointer-events-none">
         <motion.img
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: 'easeOut', delay: 0.15 }}
-          src={heroCutout?.url || '/raunak_photo.png'}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
+          src={heroCutout?.url || "/raunak_photo.png"}
           alt="Portrait of Raunak Shrivastva"
           className="block h-auto max-h-full w-auto max-w-full object-contain"
         />
@@ -115,11 +173,12 @@ export function Hero() {
 
       {/* Fade gradient where the portrait meets the background */}
       <div
-        className="absolute inset-x-0 bottom-0 z-10 h-16 pointer-events-none"
+        className="absolute inset-x-0 bottom-0 z-20 h-16 pointer-events-none"
         style={{
-          background: 'linear-gradient(to top, rgb(10 10 10) 0%, rgb(10 10 10 / 0.4) 50%, transparent 100%)',
+          background:
+            "linear-gradient(to top, rgb(10 10 10) 0%, rgb(10 10 10 / 0.4) 50%, transparent 100%)",
         }}
       />
     </section>
-  )
+  );
 }
