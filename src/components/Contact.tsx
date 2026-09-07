@@ -249,7 +249,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
             </a>
 
             <a
-              href="https://linkedin.com/in/raunakxshrivastva"
+              href="https://www.linkedin.com/in/raunak-shrivastva-319551427/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-2.5 bg-[#061221] hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white rounded-full transition-all duration-300 flex items-center gap-2"
@@ -259,12 +259,12 @@ function ContactModal({ onClose }: { onClose: () => void }) {
             </a>
 
             <a
-              href="https://instagram.com/raunakxshrivastva"
+              href="https://x.com/home"
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-2.5 bg-[#061221] hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white rounded-full transition-all duration-300 flex items-center gap-2"
             >
-              <span>📸 Instagram</span>
+              <span>𝕏 / Twitter</span>
               <span className="text-[10px] text-cyan-400">↗</span>
             </a>
           </div>
