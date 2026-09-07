@@ -224,20 +224,29 @@ export function Contact() {
 
       <div className="w-full relative z-10 flex flex-col items-center">
         
-        {/* Telemetry Header */}
+        {/* Massive Section Header */}
         <motion.div
           {...fadeInUp}
-          className="w-full max-w-7xl px-6 flex items-center justify-between border-b border-[#24221f] pb-3 mb-4 font-mono text-xs text-[#8c867a]"
+          className="w-full max-w-7xl px-6 mb-8 text-left"
         >
-          <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
-            <span className="text-white font-bold tracking-widest uppercase">
-              // TELEMETRY HUD: GET IN TOUCH
-            </span>
+          <div className="flex items-center justify-between border-b border-[#24221f] pb-3 mb-6 font-mono text-xs text-[#8c867a]">
+            <div className="flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
+              <span className="text-cyan-400 font-bold tracking-widest uppercase">
+                // 04 INTERACTIVE NEURAL CONSOLE
+              </span>
+            </div>
+            <div className="hidden sm:block tracking-widest text-[#666157]">
+              LAT: 26.9124° N // LON: 75.7873° E
+            </div>
           </div>
-          <div className="hidden sm:block tracking-widest text-[#666157]">
-            PROTOCOL // CHOICE_SELECTION
-          </div>
+
+          <h2 className="font-serif text-5xl sm:text-7xl lg:text-8xl font-light text-white uppercase tracking-tight leading-none mb-3">
+            Get In Touch.
+          </h2>
+          <p className="font-mono text-xs sm:text-sm text-[#a8a295] tracking-widest uppercase">
+            CHOOSE YOUR MATRIX REALITY — CLICK A PILL IN THE ROBOT'S HANDS TO CONNECT OR DISINTEGRATE.
+          </p>
         </motion.div>
 
         {/* 100% EDGE-TO-EDGE FULL WIDTH STAGE FOR THE ROBOT & PILLS */}
