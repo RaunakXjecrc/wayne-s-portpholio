@@ -107,7 +107,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: 'easeOut', delay: 0.15 }}
-          src={heroCutout.url}
+          src={heroCutout?.url || '/raunak_photo.png'}
           alt="Portrait of Raunak Shrivastva"
           className="block h-auto max-h-full w-auto max-w-full object-contain"
         />
