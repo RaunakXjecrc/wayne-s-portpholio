@@ -256,33 +256,78 @@ export function Skills() {
 
           </motion.div>
 
-          {/* 4. FEATURED DOMAIN 04: DEPLOYMENT & CLOUD CI/CD (FULL-WIDTH CARD BELOW) */}
+          {/* 4. FEATURED DOMAIN 04: DEPLOYMENT & CLOUD CI/CD (DETAILS LEFT, IMAGE RIGHT - ALTERNATING) */}
           <motion.div 
             {...fadeInUp}
             transition={{ ...fadeInUp.transition, delay: 0.3 }}
-            className="p-8 bg-[#12110f] border border-[#24221f] rounded-xs hover:border-amber-400/80 transition-all shadow-2xl"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 bg-[#12110f] border border-[#24221f] rounded-xs relative group hover:border-amber-400/80 transition-all duration-500 shadow-2xl"
           >
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            {/* Tech Corner Badge */}
+            <span className="absolute top-3 left-3 font-mono text-[9px] text-[#4d4942]">
+              MATRIX // CATEGORY 04
+            </span>
+            <span className="absolute top-3 right-3 font-mono text-[9px] text-amber-400 font-bold uppercase tracking-widest">
+              INFRASTRUCTURE &amp; PIPELINES
+            </span>
+
+            {/* Left Side: Skill Details & Specifications */}
+            <div className="lg:col-span-6 space-y-5 font-mono text-xs order-2 lg:order-1">
               <div>
-                <span className="text-[10px] text-amber-400 font-mono font-bold uppercase tracking-widest block mb-1">
-                  CATEGORY // 04 · DEVOPS &amp; CLOUD INFRASTRUCTURE
+                <span className="text-[10px] text-amber-400 font-bold uppercase tracking-widest block mb-1">
+                  CORE DOMAIN // 04
                 </span>
                 <h3 className="text-3xl font-serif text-white font-bold tracking-tight">
                   Deployment &amp; Cloud CI/CD
                 </h3>
-                <p className="text-sm font-sans text-[#a8a295] max-w-3xl mt-2 leading-relaxed">
-                  Automating deployment pipelines, version control workflows, containerization with Docker, and maintaining production-grade cloud Linux server infrastructure.
+                <p className="text-sm font-sans text-[#a8a295] leading-relaxed mt-2">
+                  Automating deployment pipelines, high-speed fiber-optic data conduits, version control workflows, containerization with Docker, and maintaining global production-grade cloud Linux server infrastructure.
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-2 font-mono">
-                {["Git", "GitHub Actions", "Docker", "Linux Server Ops", "Automated CI/CD"].map((t) => (
-                  <span key={t} className="px-3 py-1.5 text-xs font-bold bg-[#181715] border border-[#33302b] text-amber-300 rounded-xs">
+              {/* Detailed Breakdown */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="p-3 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
+                  <span className="text-amber-400 text-[10px] font-bold block mb-1">⚡ AUTOMATED PIPELINES</span>
+                  <p className="text-[11px] text-[#ded8ce] font-sans">GitHub Actions CI/CD &amp; Zero-Downtime Deploys</p>
+                </div>
+                <div className="p-3 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
+                  <span className="text-amber-400 text-[10px] font-bold block mb-1">🌐 GLOBAL CLOUD HOOKS</span>
+                  <p className="text-[11px] text-[#ded8ce] font-sans">Docker Containers, Server Ops &amp; Linux Nodes</p>
+                </div>
+              </div>
+
+              {/* Tech Badges */}
+              <div className="pt-4 border-t border-[#1e1d1a] flex flex-wrap gap-2">
+                {["Git", "GitHub Actions", "Docker", "Linux Server Ops", "CI/CD Pipelines", "Global Cloud", "Fiber Conduits"].map((t) => (
+                  <span 
+                    key={t} 
+                    className="px-3 py-1 text-[10px] font-bold bg-[#181715] border border-[#33302b] text-amber-300 rounded-xs hover:border-amber-400 transition-colors"
+                  >
                     {t}
                   </span>
                 ))}
               </div>
             </div>
+
+            {/* Right Side: Global Infrastructure Fiber Conduit Image Card */}
+            <div className="lg:col-span-6 relative overflow-hidden rounded-xs bg-black border border-[#24221f] group-hover:border-amber-400/50 transition-colors order-1 lg:order-2">
+              <div className="aspect-[16/10] w-full overflow-hidden relative">
+                <img 
+                  src="/skill_deployment_cicd.png" 
+                  alt="Deployment & Cloud CI/CD — Golden Robot Connecting Fiber Optic Data Conduits to Holographic Globe" 
+                  className="w-full h-full object-cover filter contrast-110 brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+
+                {/* Blueprint Grid Overlay on Hover */}
+                <div className="absolute inset-0 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px] opacity-0 group-hover:opacity-25 transition-opacity duration-500 pointer-events-none" />
+
+                {/* HUD Telemetry Overlay */}
+                <div className="absolute bottom-3 right-3 px-3 py-1 bg-[#090909]/90 border border-amber-400/50 text-amber-300 font-mono text-[10px] tracking-widest uppercase rounded-xs backdrop-blur-md">
+                  <span>✦ GLOBAL DEPLOYMENT &amp; FIBER PIPELINES</span>
+                </div>
+              </div>
+            </div>
+
           </motion.div>
 
         </div>
