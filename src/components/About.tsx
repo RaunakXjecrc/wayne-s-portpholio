@@ -38,7 +38,7 @@ export function About() {
         </motion.div>
 
         {/* 2. Grid Layout: Origin Story + Offset Telemetry Image Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch mb-16">
           
           {/* Origin Story (Col 7) */}
           <motion.div 
@@ -75,7 +75,7 @@ export function About() {
             <div className="w-full h-full min-h-[380px] bg-[#12110f] border border-[#24221f] rounded-xs overflow-hidden relative flex flex-col justify-between p-4 group-hover:border-cyan-400/80 transition-all duration-500 shadow-2xl">
               
               {/* Card Image Container with Hover Scale */}
-              <div className="relative w-full flex-1 overflow-hidden rounded-xs bg-black mb-4">
+              <div className="relative w-full flex-1 overflow-hidden rounded-xs bg-black mb-4 min-h-[240px]">
                 <img 
                   src="/raunak_photo.png" 
                   alt="Jaipur Telemetry Coordinates" 
@@ -109,125 +109,32 @@ export function About() {
 
         </div>
 
-        {/* 3. Hobbies & Passion + Core Technical Skills Matrix */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
-          
-          {/* Hobbies & Passion (Col 5) */}
-          <motion.div {...fadeInUp} className="lg:col-span-5 p-8 bg-[#12110f] border border-[#24221f] rounded-xs flex flex-col justify-between">
-            <div>
-              <span className="text-xs font-mono text-amber-400 uppercase tracking-widest block mb-3">// 03 HOBBIES &amp; PASSION</span>
-              <h3 className="text-2xl font-serif font-light text-white mb-6">Intellectual Pursuits</h3>
-
-              <ul className="space-y-4 font-sans text-sm text-[#a8a295]">
-                <li className="flex items-start gap-3">
-                  <span className="text-amber-400 font-mono text-xs">⚡</span>
-                  <div>
-                    <strong className="text-white block font-mono text-xs">High-Performance Computing</strong>
-                    GPU Micro-architectures &amp; CUDA Kernel Tuning
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-amber-400 font-mono text-xs">♟</span>
-                  <div>
-                    <strong className="text-white block font-mono text-xs">Strategic Chess &amp; Logic</strong>
-                    Algorithmic Problem Solving &amp; Game Theory
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-amber-400 font-mono text-xs">🎨</span>
-                  <div>
-                    <strong className="text-white block font-mono text-xs">Generative AI Art Systems</strong>
-                    Diffusion Models &amp; Design Architecture
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-amber-400 font-mono text-xs">🏛</span>
-                  <div>
-                    <strong className="text-white block font-mono text-xs">Stoic Philosophy</strong>
-                    Reading Marcus Aurelius, Seneca, and Epictetus
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </motion.div>
-
-          {/* Technical Skills Matrix (Col 7) */}
-          <motion.div 
-            {...fadeInUp}
-            transition={{ ...fadeInUp.transition, delay: 0.2 }}
-            className="lg:col-span-7 p-8 bg-[#12110f] border border-[#24221f] rounded-xs flex flex-col justify-between"
-          >
-            <div>
-              <span className="text-xs font-mono text-amber-400 uppercase tracking-widest block mb-3">// 04 CORE TECHNICAL SKILLS MATRIX</span>
-              <h3 className="text-2xl font-serif font-light text-white mb-6">System Capabilities</h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-mono text-xs">
-                
-                <div className="p-4 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
-                  <span className="text-amber-400 font-bold block mb-2">AI &amp; DEEP LEARNING</span>
-                  <p className="text-[#a8a295] leading-relaxed">
-                    PyTorch, Transformers, LangChain, Autograd Tensors, LoRA/QLoRA, RAG.
-                  </p>
-                </div>
-
-                <div className="p-4 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
-                  <span className="text-amber-400 font-bold block mb-2">PROGRAMMING &amp; SYSTEMS</span>
-                  <p className="text-[#a8a295] leading-relaxed">
-                    Python, C, C++, CUDA, POSIX Linux, SQL, Docker.
-                  </p>
-                </div>
-
-                <div className="p-4 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
-                  <span className="text-amber-400 font-bold block mb-2">WEB &amp; FRONTEND</span>
-                  <p className="text-[#a8a295] leading-relaxed">
-                    React.js, Next.js, Tailwind CSS, Framer Motion.
-                  </p>
-                </div>
-
-                <div className="p-4 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
-                  <span className="text-amber-400 font-bold block mb-2">DEPLOYMENT &amp; CI/CD</span>
-                  <p className="text-[#a8a295] leading-relaxed">
-                    Git, GitHub Actions Automated CI/CD.
-                  </p>
-                </div>
-
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
-
-        {/* 4. Key Achievements & Metrics */}
+        {/* 3. Hobbies & Passions */}
         <motion.div {...fadeInUp} className="p-8 bg-[#12110f] border border-[#24221f] rounded-xs">
-          <span className="text-xs font-mono text-amber-400 uppercase tracking-widest block mb-3">// 05 KEY ACHIEVEMENTS &amp; METRICS</span>
-          <h3 className="text-2xl font-serif font-light text-white mb-8">Performance Benchmark</h3>
+          <span className="text-xs font-mono text-amber-400 uppercase tracking-widest block mb-3">// 02 HOBBIES &amp; PASSION</span>
+          <h3 className="text-2xl font-serif font-light text-white mb-6">Intellectual Pursuits</h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-mono">
-            
-            <div className="p-6 bg-[#0a0a09] border border-[#1e1c19] rounded-xs relative group hover:border-amber-400/80 transition-colors">
-              <span className="text-4xl font-serif font-bold text-amber-400 block mb-2">28+</span>
-              <span className="text-xs text-white font-bold block mb-1">GitHub Repositories</span>
-              <p className="text-[11px] text-[#8c867a]">Active open-source AI &amp; systems repos on GitHub.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 font-sans text-sm">
+            <div className="p-4 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
+              <span className="text-amber-400 font-mono text-xs block mb-1">⚡ GPU ARCHITECTURE</span>
+              <strong className="text-white block font-mono text-xs mb-1">High-Performance Computing</strong>
+              <p className="text-xs text-[#a8a295]">GPU micro-architectures &amp; CUDA kernel tuning.</p>
             </div>
-
-            <div className="p-6 bg-[#0a0a09] border border-[#1e1c19] rounded-xs relative group hover:border-amber-400/80 transition-colors">
-              <span className="text-4xl font-serif font-bold text-amber-400 block mb-2">65%</span>
-              <span className="text-xs text-white font-bold block mb-1">VRAM Reduction</span>
-              <p className="text-[11px] text-[#8c867a]">Memory reduction on 7B+ LLMs using custom quantization pipelines.</p>
+            <div className="p-4 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
+              <span className="text-amber-400 font-mono text-xs block mb-1">♟ GAME THEORY</span>
+              <strong className="text-white block font-mono text-xs mb-1">Strategic Chess &amp; Logic</strong>
+              <p className="text-xs text-[#a8a295]">Algorithmic problem solving &amp; tactical logic.</p>
             </div>
-
-            <div className="p-6 bg-[#0a0a09] border border-[#1e1c19] rounded-xs relative group hover:border-amber-400/80 transition-colors">
-              <span className="text-4xl font-serif font-bold text-amber-400 block mb-2">3.4x</span>
-              <span className="text-xs text-white font-bold block mb-1">Parallel Speedup</span>
-              <p className="text-[11px] text-[#8c867a]">Throughput speedup via native C++/CUDA matrix kernels.</p>
+            <div className="p-4 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
+              <span className="text-amber-400 font-mono text-xs block mb-1">🎨 GENERATIVE ART</span>
+              <strong className="text-white block font-mono text-xs mb-1">AI Art Systems</strong>
+              <p className="text-xs text-[#a8a295]">Diffusion models &amp; procedural design architecture.</p>
             </div>
-
-            <div className="p-6 bg-[#0a0a09] border border-[#1e1c19] rounded-xs relative group hover:border-amber-400/80 transition-colors">
-              <span className="text-4xl font-serif font-bold text-amber-400 block mb-2">8K</span>
-              <span className="text-xs text-white font-bold block mb-1">Stoic Dossier Engine</span>
-              <p className="text-[11px] text-[#8c867a]">Stoic Tree 8K interactive skill dossier engine.</p>
+            <div className="p-4 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
+              <span className="text-amber-400 font-mono text-xs block mb-1">🏛 PHILOSOPHY</span>
+              <strong className="text-white block font-mono text-xs mb-1">Stoic Philosophy</strong>
+              <p className="text-xs text-[#a8a295]">Reading Marcus Aurelius, Seneca, and Epictetus.</p>
             </div>
-
           </div>
         </motion.div>
 
