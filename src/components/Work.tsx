@@ -56,49 +56,58 @@ export function Work() {
 
         </div>
 
-        {/* Certificates Grid */}
+        {/* Scaler Certificate Showcase */}
         <motion.div {...fadeInUp} className="mb-8">
-          <h3 className="text-2xl font-serif text-white font-light mb-8">Official MIT Certificates &amp; Credentials</h3>
+          <h3 className="text-2xl font-serif text-white font-light mb-8">Verified Certification</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="max-w-4xl mx-auto">
             
-            {/* Certificate 1: MIT Data Science */}
+            {/* Scaler Python Certificate */}
             <div 
-              className="group bg-[#12110f] border border-[#24221f] rounded-xs overflow-hidden cursor-pointer hover:border-amber-400 transition-colors p-4"
-              onClick={() => setSelectedCert("/cert_mit_data_science.jpg")}
+              className="group bg-[#12110f] border border-[#24221f] rounded-xs overflow-hidden cursor-pointer hover:border-amber-400 transition-colors p-6 flex flex-col md:flex-row items-center gap-8 shadow-2xl"
+              onClick={() => setSelectedCert("/cert_scaler_python.png")}
             >
-              <div className="aspect-[4/3] bg-black overflow-hidden mb-4 rounded-xs">
-                <img src="/cert_mit_data_science.jpg" alt="MIT Data Science Certificate" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              {/* Image Preview */}
+              <div className="w-full md:w-1/2 aspect-[4/3] bg-black overflow-hidden rounded-xs border border-[#1e1c19] relative">
+                <img 
+                  src="/cert_scaler_python.png" 
+                  alt="Scaler Topics Certificate of Excellence — Python" 
+                  className="w-full h-full object-cover filter contrast-105 brightness-95 group-hover:scale-105 transition-transform duration-500" 
+                />
+                <div className="absolute top-3 left-3 px-3 py-1 bg-black/80 border border-amber-400/50 text-amber-300 font-mono text-[9px] uppercase tracking-widest rounded-xs backdrop-blur-md">
+                  <span>✦ VERIFIED CREDENTIAL</span>
+                </div>
               </div>
-              <span className="text-[10px] font-mono text-amber-400 uppercase block mb-1">MIT PROFESSIONAL EDUCATION</span>
-              <h4 className="text-lg font-serif text-white font-bold">Applied Data Science Program</h4>
-              <p className="text-xs font-sans text-[#a8a295] mt-2">Leveraging AI for Effective Decision-Making. Awarded to Raunak Shrivastva.</p>
-            </div>
 
-            {/* Certificate 2: MIT Cloud & DevOps */}
-            <div 
-              className="group bg-[#12110f] border border-[#24221f] rounded-xs overflow-hidden cursor-pointer hover:border-amber-400 transition-colors p-4"
-              onClick={() => setSelectedCert("/cert_mit_cloud_devops.jpg")}
-            >
-              <div className="aspect-[4/3] bg-black overflow-hidden mb-4 rounded-xs">
-                <img src="/cert_mit_cloud_devops.jpg" alt="MIT Cloud & DevOps Certificate" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              </div>
-              <span className="text-[10px] font-mono text-amber-400 uppercase block mb-1">MIT PROFESSIONAL EDUCATION</span>
-              <h4 className="text-lg font-serif text-white font-bold">Cloud &amp; DevOps Certification</h4>
-              <p className="text-xs font-sans text-[#a8a295] mt-2">Continuous Transformation &amp; Architecture. Awarded to Raunak Shrivastva.</p>
-            </div>
+              {/* Certificate Metadata */}
+              <div className="w-full md:w-1/2 space-y-4">
+                <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-widest block">
+                  SCALER TOPICS // CERTIFICATE OF EXCELLENCE
+                </span>
+                
+                <h4 className="text-2xl font-serif text-white font-bold leading-tight">
+                  Python Course for Beginners: Mastering the Essentials
+                </h4>
 
-            {/* Certificate 3: CUDA Acceleration */}
-            <div 
-              className="group bg-[#12110f] border border-[#24221f] rounded-xs overflow-hidden cursor-pointer hover:border-amber-400 transition-colors p-4"
-              onClick={() => setSelectedCert("/cert_cuda.jpg")}
-            >
-              <div className="aspect-[4/3] bg-black overflow-hidden mb-4 rounded-xs">
-                <img src="/cert_cuda.jpg" alt="CUDA Acceleration Certificate" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <p className="text-xs font-sans text-[#a8a295] leading-relaxed">
+                  In recognition of the completion of <strong>121 Video Tutorials</strong>, <strong>16 Modules</strong>, and <strong>10 Coding Challenges</strong>. Awarded to <strong>Raunak Shrivastva</strong> on 24 October 2025 by Anshuman Singh (Co-founder SCALER).
+                </p>
+
+                <div className="pt-2 border-t border-[#1e1d1a] flex items-center justify-between font-mono text-xs">
+                  <a 
+                    href="https://moonshot.scaler.com/s/sl/uQcC7yVtkU" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-amber-400 hover:text-white transition-colors flex items-center gap-1.5 font-bold"
+                  >
+                    <span>VERIFY CREDENTIAL</span>
+                    <span className="text-[10px]">↗</span>
+                  </a>
+                  <span className="text-[#6b655b] text-[10px]">CLICK CARD TO ENLARGE</span>
+                </div>
               </div>
-              <span className="text-[10px] font-mono text-amber-400 uppercase block mb-1">PARALLEL COMPUTING</span>
-              <h4 className="text-lg font-serif text-white font-bold">CUDA Acceleration &amp; GPU Computing</h4>
-              <p className="text-xs font-sans text-[#a8a295] mt-2">High performance parallel linear algebra. Awarded to Raunak Shrivastva.</p>
+
             </div>
 
           </div>
@@ -106,13 +115,13 @@ export function Work() {
 
       </div>
 
-      {/* Modal Lightbox for Certificates */}
+      {/* Modal Lightbox for Certificate */}
       {selectedCert && (
         <div 
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 backdrop-blur-md cursor-pointer"
           onClick={() => setSelectedCert(null)}
         >
-          <div className="relative max-w-4xl w-full bg-[#12110f] border border-[#383633] p-2 rounded-xs shadow-2xl">
+          <div className="relative max-w-5xl w-full bg-[#12110f] border border-[#383633] p-3 rounded-xs shadow-2xl">
             <img src={selectedCert} alt="Certificate Full View" className="w-full h-auto max-h-[85vh] object-contain rounded-xs" />
             <div className="text-center py-2 font-mono text-xs text-[#a8a295]">
               Click anywhere to close

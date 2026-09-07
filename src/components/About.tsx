@@ -53,7 +53,7 @@ export function About() {
               <span className="text-xs font-mono text-amber-400 uppercase tracking-widest block mb-3">// 01 ORIGIN STORY</span>
               <h3 className="text-2xl font-serif font-light text-white mb-4">Classical Foundations to Deep Learning Execution</h3>
               <p className="text-sm font-sans text-[#a8a295] leading-relaxed mb-4">
-                Pursuing B.Tech in Computer Science &amp; Engineering at JECRC University, Jaipur. My journey began with classical algorithms and quickly evolved into an obsession with neural network architectures, machine reasoning, and low-level C++/CUDA hardware execution.
+                My journey began with classical algorithms and quickly evolved into an obsession with neural network architectures, machine reasoning, and low-level C++/CUDA hardware execution.
               </p>
               <p className="text-sm font-sans text-[#a8a295] leading-relaxed">
                 I operate at the intersection of mathematical theory and systems engineering—optimizing matrix kernels for peak throughput while conditioning generative LLMs for precision execution.
