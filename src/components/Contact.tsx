@@ -267,6 +267,16 @@ function ContactModal({ onClose }: { onClose: () => void }) {
               <span>𝕏 / Twitter</span>
               <span className="text-[10px] text-cyan-400">↗</span>
             </a>
+
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-[#061221] hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white rounded-full transition-all duration-300 flex items-center gap-2"
+            >
+              <span>📄 Resume</span>
+              <span className="text-[10px] text-cyan-400">↗</span>
+            </a>
           </div>
 
           <div className="flex items-center gap-2 text-cyan-500/60 text-[10px] tracking-widest">

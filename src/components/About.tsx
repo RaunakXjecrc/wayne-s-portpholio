@@ -60,9 +60,17 @@ export function About() {
               </p>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-[#1e1d1a] flex items-center justify-between font-mono text-[11px] text-[#8c867a]">
+            <div className="mt-8 pt-4 border-t border-[#1e1d1a] flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] text-[#8c867a]">
               <span>OPERATING STATUS: ACTIVE (2026)</span>
-              <span>JECRC UNIVERSITY</span>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-[#1c1b18] hover:bg-amber-400 hover:text-black border border-amber-400/60 text-amber-300 font-mono font-bold text-xs uppercase tracking-widest rounded-xs transition-all duration-300 flex items-center gap-2 shadow-md cursor-pointer"
+              >
+                <span>📄 VIEW RESUME</span>
+                <span className="text-[10px]">↗</span>
+              </a>
             </div>
           </motion.div>
 
