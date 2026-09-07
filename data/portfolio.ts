@@ -2,7 +2,6 @@ export const profile = {
   name: "Raunak Shrivastva",
   handle: "@raunakxshrivastva",
   title: "AI / ML Engineer & Neural Systems Researcher",
-  education: "B.Tech CSE @ JECRC University",
   location: "INDIA · REMOTE",
   availability: "OPEN TO AI/ML ROLES & CONTRACTS",
   bio: "Studying B.Tech CSE at JECRC University. Designing, training, and optimizing deep learning models, LLM pipelines, and high-performance AI infrastructure.",
@@ -54,12 +53,6 @@ export const skillGroups = [
   { label: "MACHINE LEARNING", kanji: "知", skills: ["PyTorch", "TensorFlow", "Scikit-Learn", "Hugging Face", "Transformers", "CUDA"] },
   { label: "GEN AI & RAG", kanji: "創", skills: ["vLLM", "LangChain", "LlamaIndex", "Qdrant / Pinecone", "PEFT / LoRA", "Ollama"] },
   { label: "MLOPS & STACK", kanji: "構", skills: ["Python", "FastAPI", "Docker", "MLflow", "TensorRT", "Weights & Biases"] },
-];
-
-export const milestones = [
-  { state: "NOW", date: "2026", title: "B.Tech CSE @ JECRC University", note: "Focusing on Deep Learning, Distributed Neural Networks & Generative AI." },
-  { state: "ACTIVE", date: "Q2 2026", title: "Open Source LLM Optimization", note: "Contributing custom quantization kernels and attention optimization patches." },
-  { state: "LOG", date: "2025", title: "Deployed 20+ Production ML Pipelines", note: "Across natural language processing, computer vision, and real-time recommendation engines." },
 ];
 
 export const socials = [
