@@ -29,13 +29,13 @@ export function Skills() {
             Core Technical Skills Matrix
           </h2>
           <p className="text-sm font-sans text-[#a8a295] max-w-2xl mt-3">
-            Deep learning architectures, low-level CUDA systems engineering, full-stack web engines, and automated cloud deployment.
+            Deep learning architectures, low-level CUDA hardware systems engineering, full-stack web engines, and automated cloud deployment.
           </p>
         </motion.div>
 
-        {/* 1. FEATURED PRIMARY DOMAIN: AI & DEEP LEARNING (SIDE-BY-SIDE IMAGE & DETAILS LAYOUT) */}
         <div className="space-y-16">
           
+          {/* 1. FEATURED DOMAIN 01: AI & DEEP LEARNING (IMAGE LEFT, DETAILS RIGHT) */}
           <motion.div 
             {...fadeInUp}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 bg-[#12110f] border border-[#24221f] rounded-xs relative group hover:border-cyan-400/80 transition-all duration-500 shadow-2xl"
@@ -45,7 +45,7 @@ export function Skills() {
               MATRIX // CATEGORY 01
             </span>
             <span className="absolute top-3 right-3 font-mono text-[9px] text-cyan-400 font-bold uppercase tracking-widest">
-              PRIMARY STACK
+              PRIMARY AI STACK
             </span>
 
             {/* Left Side: Robot Image Card */}
@@ -108,43 +108,83 @@ export function Skills() {
 
           </motion.div>
 
-          {/* 2. THREE-COLUMN MATRIX FOR SYSTEMS, WEB, & DEPLOYMENT */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 font-mono text-xs">
-            
-            {/* Category 02: Programming & Systems */}
-            <motion.div 
-              {...fadeInUp} 
-              transition={{ ...fadeInUp.transition, delay: 0.1 }}
-              className="p-8 bg-[#12110f] border border-[#24221f] rounded-xs hover:border-amber-400/80 transition-all flex flex-col justify-between"
-            >
+          {/* 2. FEATURED DOMAIN 02: PROGRAMMING & HARDWARE SYSTEMS (DETAILS LEFT, IMAGE RIGHT - ALTERNATING) */}
+          <motion.div 
+            {...fadeInUp}
+            transition={{ ...fadeInUp.transition, delay: 0.1 }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 bg-[#12110f] border border-[#24221f] rounded-xs relative group hover:border-amber-400/80 transition-all duration-500 shadow-2xl"
+          >
+            {/* Tech Corner Badge */}
+            <span className="absolute top-3 left-3 font-mono text-[9px] text-[#4d4942]">
+              MATRIX // CATEGORY 02
+            </span>
+            <span className="absolute top-3 right-3 font-mono text-[9px] text-amber-400 font-bold uppercase tracking-widest">
+              HARDWARE &amp; COMPUTE
+            </span>
+
+            {/* Left Side: Skill Details & Specifications */}
+            <div className="lg:col-span-6 space-y-5 font-mono text-xs order-2 lg:order-1">
               <div>
-                <span className="text-[10px] text-amber-400 font-bold uppercase tracking-widest block mb-2">
-                  CATEGORY // 02
+                <span className="text-[10px] text-amber-400 font-bold uppercase tracking-widest block mb-1">
+                  CORE DOMAIN // 02
                 </span>
-                <h3 className="text-2xl font-serif text-white font-bold mb-3">
+                <h3 className="text-3xl font-serif text-white font-bold tracking-tight">
                   Programming &amp; Systems
                 </h3>
-                <p className="text-[#a8a295] font-sans leading-relaxed mb-6">
-                  High-performance computing in C/C++ &amp; CUDA. Writing custom matrix multiplication kernels, POSIX systems, and memory-optimized algorithms.
+                <p className="text-sm font-sans text-[#a8a295] leading-relaxed mt-2">
+                  High-performance systems engineering in C, C++, and CUDA. Writing custom matrix multiplication kernels, memory-optimized parallel algorithms, POSIX Linux system calls, and GPU hardware accelerator drivers.
                 </p>
               </div>
 
-              <div className="space-y-4">
-                <div className="p-3 bg-[#0a0a09] border border-[#1e1c19] rounded-xs text-[11px] font-sans text-[#a8a295]">
-                  <span className="text-amber-400 font-mono font-bold block mb-0.5">GPU COMPUTING</span>
-                  Native CUDA kernels &amp; C++ parallel throughput optimization.
+              {/* Detailed Breakdown */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="p-3 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
+                  <span className="text-amber-400 text-[10px] font-bold block mb-1">⚡ CUDA COMPUTING</span>
+                  <p className="text-[11px] text-[#ded8ce] font-sans">Parallel Kernels &amp; High-Throughput Speedup</p>
                 </div>
-
-                <div className="pt-4 border-t border-[#1e1d1a] flex flex-wrap gap-1.5">
-                  {["Python", "C", "C++", "CUDA", "POSIX Linux", "SQL", "Docker"].map((t) => (
-                    <span key={t} className="px-2.5 py-1 text-[10px] bg-[#1a1917] border border-[#2e2c28] text-[#d4ceb8] rounded-xs">
-                      {t}
-                    </span>
-                  ))}
+                <div className="p-3 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
+                  <span className="text-amber-400 text-[10px] font-bold block mb-1">💻 POSIX LINUX</span>
+                  <p className="text-[11px] text-[#ded8ce] font-sans">System Calls, Multi-threading &amp; C/C++ Ops</p>
                 </div>
               </div>
-            </motion.div>
 
+              {/* Tech Badges */}
+              <div className="pt-4 border-t border-[#1e1d1a] flex flex-wrap gap-2">
+                {["Python", "C", "C++", "CUDA", "POSIX Linux", "Parallel Matrix Kernels", "SQL", "Docker"].map((t) => (
+                  <span 
+                    key={t} 
+                    className="px-3 py-1 text-[10px] font-bold bg-[#181715] border border-[#33302b] text-amber-300 rounded-xs hover:border-amber-400 transition-colors"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Side: Hardware Server Lab Image Card */}
+            <div className="lg:col-span-6 relative overflow-hidden rounded-xs bg-black border border-[#24221f] group-hover:border-amber-400/50 transition-colors order-1 lg:order-2">
+              <div className="aspect-[16/10] w-full overflow-hidden relative">
+                <img 
+                  src="/skill_hardware_systems.jpg" 
+                  alt="Hardware Systems & Neural Processor Lab — Hardware Acceleration" 
+                  className="w-full h-full object-cover filter contrast-110 brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+
+                {/* Blueprint Grid Overlay on Hover */}
+                <div className="absolute inset-0 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px] opacity-0 group-hover:opacity-25 transition-opacity duration-500 pointer-events-none" />
+
+                {/* HUD Telemetry Overlay */}
+                <div className="absolute bottom-3 right-3 px-3 py-1 bg-[#090909]/90 border border-amber-400/50 text-amber-300 font-mono text-[10px] tracking-widest uppercase rounded-xs backdrop-blur-md">
+                  <span>✦ NEURAL HARDWARE COMPUTE LAB</span>
+                </div>
+              </div>
+            </div>
+
+          </motion.div>
+
+          {/* 3. TWO-COLUMN MATRIX FOR WEB & DEPLOYMENT */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-mono text-xs">
+            
             {/* Category 03: Web & Frontend */}
             <motion.div 
               {...fadeInUp} 
@@ -156,7 +196,7 @@ export function Skills() {
                   CATEGORY // 03
                 </span>
                 <h3 className="text-2xl font-serif text-white font-bold mb-3">
-                  Web &amp; Frontend
+                  Web &amp; Frontend Systems
                 </h3>
                 <p className="text-[#a8a295] font-sans leading-relaxed mb-6">
                   Creating responsive, high-impact web interfaces with dark terminal aesthetics, smooth micro-animations, and dynamic visual design systems.
@@ -190,7 +230,7 @@ export function Skills() {
                   CATEGORY // 04
                 </span>
                 <h3 className="text-2xl font-serif text-white font-bold mb-3">
-                  Deployment &amp; CI/CD
+                  Deployment &amp; Cloud CI/CD
                 </h3>
                 <p className="text-[#a8a295] font-sans leading-relaxed mb-6">
                   Automating deployment pipelines, version control workflows, containerization, and maintaining production-grade cloud Linux infrastructure.
