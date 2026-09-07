@@ -182,78 +182,108 @@ export function Skills() {
 
           </motion.div>
 
-          {/* 3. TWO-COLUMN MATRIX FOR WEB & DEPLOYMENT */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-mono text-xs">
-            
-            {/* Category 03: Web & Frontend */}
-            <motion.div 
-              {...fadeInUp} 
-              transition={{ ...fadeInUp.transition, delay: 0.2 }}
-              className="p-8 bg-[#12110f] border border-[#24221f] rounded-xs hover:border-amber-400/80 transition-all flex flex-col justify-between"
-            >
+          {/* 3. FEATURED DOMAIN 03: WEB & FRONTEND SYSTEMS (IMAGE LEFT, DETAILS RIGHT) */}
+          <motion.div 
+            {...fadeInUp}
+            transition={{ ...fadeInUp.transition, delay: 0.2 }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-8 bg-[#12110f] border border-[#24221f] rounded-xs relative group hover:border-cyan-400/80 transition-all duration-500 shadow-2xl"
+          >
+            {/* Tech Corner Badge */}
+            <span className="absolute top-3 left-3 font-mono text-[9px] text-[#4d4942]">
+              MATRIX // CATEGORY 03
+            </span>
+            <span className="absolute top-3 right-3 font-mono text-[9px] text-cyan-400 font-bold uppercase tracking-widest">
+              WEB ENGINES &amp; UX
+            </span>
+
+            {/* Left Side: Robot Workstation Image Card */}
+            <div className="lg:col-span-6 relative overflow-hidden rounded-xs bg-black border border-[#24221f] group-hover:border-cyan-400/50 transition-colors">
+              <div className="aspect-[16/10] w-full overflow-hidden relative">
+                <img 
+                  src="/skill_web_frontend.jpg" 
+                  alt="Web & Frontend Systems Workstation — Robot Analyzing JavaScript Engine & UX Flow Map" 
+                  className="w-full h-full object-cover filter contrast-110 brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+
+                {/* Blueprint Grid Overlay on Hover */}
+                <div className="absolute inset-0 bg-[radial-gradient(#22d3ee_1px,transparent_1px)] [background-size:16px_16px] opacity-0 group-hover:opacity-25 transition-opacity duration-500 pointer-events-none" />
+
+                {/* HUD Telemetry Overlay */}
+                <div className="absolute bottom-3 left-3 px-3 py-1 bg-[#090909]/90 border border-cyan-400/50 text-cyan-300 font-mono text-[10px] tracking-widest uppercase rounded-xs backdrop-blur-md">
+                  <span>✦ JS ENGINE &amp; UX WORKSTATION</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side: Skill Details & Specifications */}
+            <div className="lg:col-span-6 space-y-5 font-mono text-xs">
               <div>
-                <span className="text-[10px] text-amber-400 font-bold uppercase tracking-widest block mb-2">
-                  CATEGORY // 03
+                <span className="text-[10px] text-cyan-400 font-bold uppercase tracking-widest block mb-1">
+                  CORE DOMAIN // 03
                 </span>
-                <h3 className="text-2xl font-serif text-white font-bold mb-3">
+                <h3 className="text-3xl font-serif text-white font-bold tracking-tight">
                   Web &amp; Frontend Systems
                 </h3>
-                <p className="text-[#a8a295] font-sans leading-relaxed mb-6">
-                  Creating responsive, high-impact web interfaces with dark terminal aesthetics, smooth micro-animations, and dynamic visual design systems.
+                <p className="text-sm font-sans text-[#a8a295] leading-relaxed mt-2">
+                  Engineered web applications, interactive state management architecture (Redux/Context), high-performance JavaScript engines, and dark editorial UI design systems.
                 </p>
               </div>
 
-              <div className="space-y-4">
-                <div className="p-3 bg-[#0a0a09] border border-[#1e1c19] rounded-xs text-[11px] font-sans text-[#a8a295]">
-                  <span className="text-amber-400 font-mono font-bold block mb-0.5">MODERN FRAMEWORKS</span>
-                  React.js, Next.js, Framer Motion, and fine-tuned CSS layouts.
+              {/* Detailed Breakdown */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="p-3 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
+                  <span className="text-cyan-400 text-[10px] font-bold block mb-1">⚛ REACT &amp; NEXT.JS</span>
+                  <p className="text-[11px] text-[#ded8ce] font-sans">Server Components, SSR &amp; State Architecture</p>
                 </div>
-
-                <div className="pt-4 border-t border-[#1e1d1a] flex flex-wrap gap-1.5">
-                  {["React.js", "Next.js", "Tailwind CSS", "Framer Motion", "TypeScript", "HTML5/CSS3"].map((t) => (
-                    <span key={t} className="px-2.5 py-1 text-[10px] bg-[#1a1917] border border-[#2e2c28] text-[#d4ceb8] rounded-xs">
-                      {t}
-                    </span>
-                  ))}
+                <div className="p-3 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
+                  <span className="text-cyan-400 text-[10px] font-bold block mb-1">🎨 DESIGN SYSTEMS</span>
+                  <p className="text-[11px] text-[#ded8ce] font-sans">Tailwind CSS, Framer Motion &amp; Micro-animations</p>
                 </div>
               </div>
-            </motion.div>
 
-            {/* Category 04: Deployment & CI/CD */}
-            <motion.div 
-              {...fadeInUp} 
-              transition={{ ...fadeInUp.transition, delay: 0.3 }}
-              className="p-8 bg-[#12110f] border border-[#24221f] rounded-xs hover:border-amber-400/80 transition-all flex flex-col justify-between"
-            >
+              {/* Tech Badges */}
+              <div className="pt-4 border-t border-[#1e1d1a] flex flex-wrap gap-2">
+                {["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "State Management", "HTML5/CSS3"].map((t) => (
+                  <span 
+                    key={t} 
+                    className="px-3 py-1 text-[10px] font-bold bg-[#181715] border border-[#33302b] text-cyan-300 rounded-xs hover:border-cyan-400 transition-colors"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+          </motion.div>
+
+          {/* 4. FEATURED DOMAIN 04: DEPLOYMENT & CLOUD CI/CD (FULL-WIDTH CARD BELOW) */}
+          <motion.div 
+            {...fadeInUp}
+            transition={{ ...fadeInUp.transition, delay: 0.3 }}
+            className="p-8 bg-[#12110f] border border-[#24221f] rounded-xs hover:border-amber-400/80 transition-all shadow-2xl"
+          >
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div>
-                <span className="text-[10px] text-amber-400 font-bold uppercase tracking-widest block mb-2">
-                  CATEGORY // 04
+                <span className="text-[10px] text-amber-400 font-mono font-bold uppercase tracking-widest block mb-1">
+                  CATEGORY // 04 · DEVOPS &amp; CLOUD INFRASTRUCTURE
                 </span>
-                <h3 className="text-2xl font-serif text-white font-bold mb-3">
+                <h3 className="text-3xl font-serif text-white font-bold tracking-tight">
                   Deployment &amp; Cloud CI/CD
                 </h3>
-                <p className="text-[#a8a295] font-sans leading-relaxed mb-6">
-                  Automating deployment pipelines, version control workflows, containerization, and maintaining production-grade cloud Linux infrastructure.
+                <p className="text-sm font-sans text-[#a8a295] max-w-3xl mt-2 leading-relaxed">
+                  Automating deployment pipelines, version control workflows, containerization with Docker, and maintaining production-grade cloud Linux server infrastructure.
                 </p>
               </div>
 
-              <div className="space-y-4">
-                <div className="p-3 bg-[#0a0a09] border border-[#1e1c19] rounded-xs text-[11px] font-sans text-[#a8a295]">
-                  <span className="text-amber-400 font-mono font-bold block mb-0.5">DEVOPS AUTOMATION</span>
-                  GitHub Actions CI/CD workflows and automated server deploys.
-                </div>
-
-                <div className="pt-4 border-t border-[#1e1d1a] flex flex-wrap gap-1.5">
-                  {["Git", "GitHub Actions", "Docker", "Linux Server Ops", "CI/CD Pipelines"].map((t) => (
-                    <span key={t} className="px-2.5 py-1 text-[10px] bg-[#1a1917] border border-[#2e2c28] text-[#d4ceb8] rounded-xs">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+              <div className="flex flex-wrap gap-2 font-mono">
+                {["Git", "GitHub Actions", "Docker", "Linux Server Ops", "Automated CI/CD"].map((t) => (
+                  <span key={t} className="px-3 py-1.5 text-xs font-bold bg-[#181715] border border-[#33302b] text-amber-300 rounded-xs">
+                    {t}
+                  </span>
+                ))}
               </div>
-            </motion.div>
-
-          </div>
+            </div>
+          </motion.div>
 
         </div>
 
