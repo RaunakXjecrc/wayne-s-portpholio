@@ -13,7 +13,6 @@ const fadeInUp = {
 // Thanos Disintegration Dust Canvas Component
 function DisintegrationOverlay({ onReset }: { onReset: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [dissolved, setDissolved] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -32,7 +31,7 @@ function DisintegrationOverlay({ onReset }: { onReset: () => void }) {
     window.addEventListener("resize", handleResize);
 
     // Generate thousands of dust particles
-    const particleCount = 7000;
+    const particleCount = 7500;
     const particles: Array<{
       x: number;
       y: number;
@@ -89,8 +88,6 @@ function DisintegrationOverlay({ onReset }: { onReset: () => void }) {
 
       if (aliveCount > 100) {
         animationFrameId = requestAnimationFrame(render);
-      } else {
-        setDissolved(true);
       }
     };
 
@@ -144,30 +141,134 @@ function DisintegrationOverlay({ onReset }: { onReset: () => void }) {
   );
 }
 
+// Blue Pill Holographic Contact Modal Component
+function ContactModal({ onClose }: { onClose: () => void }) {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("raunakxshrivastva@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[9990] bg-black/85 flex items-center justify-center p-4 backdrop-blur-md cursor-pointer"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.9, y: 20 }}
+        animate={{ scale: 1, y: 0 }}
+        exit={{ scale: 0.9, y: 20 }}
+        className="relative max-w-2xl w-full bg-[#0d131a] border border-cyan-500/50 p-8 rounded-xs shadow-[0_0_50px_rgba(6,182,212,0.4)] text-[#ded8ce] font-mono cursor-default"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close X */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-cyan-400 hover:text-white text-sm font-bold p-1 cursor-pointer"
+        >
+          ✕
+        </button>
+
+        <div className="flex items-center gap-3 text-cyan-400 text-xs tracking-widest uppercase mb-4">
+          <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
+          <span>// BLUE PILL ACTIVATED: ARCHITECT CONTACT</span>
+        </div>
+
+        <h3 className="text-3xl font-serif text-white font-light mb-6">
+          Raunak Shrivastva — Direct Channels
+        </h3>
+
+        {/* Email Box */}
+        <div className="p-4 bg-[#080d12] border border-cyan-500/40 rounded-xs mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <span className="text-[10px] text-cyan-400 uppercase tracking-widest block mb-1">
+              ✉ DIRECT EMAIL
+            </span>
+            <span className="text-base text-white font-bold tracking-wide select-all">
+              raunakxshrivastva@gmail.com
+            </span>
+          </div>
+
+          <button
+            onClick={copyEmail}
+            className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-black font-bold text-xs uppercase tracking-widest rounded-xs transition-colors cursor-pointer whitespace-nowrap"
+          >
+            {copied ? "✓ COPIED!" : "COPY EMAIL"}
+          </button>
+        </div>
+
+        {/* Location & Details */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 text-xs">
+          <div className="p-4 bg-[#080d12] border border-[#1e2630] rounded-xs">
+            <span className="text-[10px] text-amber-400 uppercase tracking-widest block mb-1">
+              📍 OPERATING REGION
+            </span>
+            <strong className="text-white block text-sm">Jaipur, Rajasthan, India</strong>
+            <span className="text-[10px] text-[#706a61] block pt-1">
+              [26.9124° N, 75.7873° E]
+            </span>
+          </div>
+
+          <div className="p-4 bg-[#080d12] border border-[#1e2630] rounded-xs">
+            <span className="text-[10px] text-cyan-400 uppercase tracking-widest block mb-1">
+              ⚡ STATUS &amp; AVAILABILITY
+            </span>
+            <strong className="text-white block text-sm">Open for AI &amp; Systems Roles</strong>
+            <span className="text-[10px] text-[#706a61] block pt-1">
+              Active (2026) · Remote / On-Site
+            </span>
+          </div>
+        </div>
+
+        {/* Social Profiles */}
+        <div className="pt-4 border-t border-[#1e2630] flex flex-wrap gap-3 text-xs">
+          <a
+            href="https://github.com/raunakxshrivastva"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-[#080d12] border border-cyan-500/40 hover:border-cyan-400 text-white rounded-xs transition-colors flex items-center gap-2"
+          >
+            <span>🐙 GitHub</span>
+            <span className="text-[10px] text-cyan-400">↗</span>
+          </a>
+
+          <a
+            href="https://linkedin.com/in/raunakxshrivastva"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-[#080d12] border border-cyan-500/40 hover:border-cyan-400 text-white rounded-xs transition-colors flex items-center gap-2"
+          >
+            <span>💼 LinkedIn</span>
+            <span className="text-[10px] text-cyan-400">↗</span>
+          </a>
+
+          <a
+            href="https://instagram.com/raunakxshrivastva"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-[#080d12] border border-cyan-500/40 hover:border-cyan-400 text-white rounded-xs transition-colors flex items-center gap-2"
+          >
+            <span>📸 Instagram</span>
+            <span className="text-[10px] text-cyan-400">↗</span>
+          </a>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export function Contact() {
   const [pillChosen, setPillChosen] = useState<"red" | "blue" | null>(null);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.email || !formData.message) return;
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 5000);
-  };
 
   return (
     <section
       id="contact"
-      className="relative w-full bg-[#050505] text-[#ded8ce] py-24 border-t border-[#1c1b19] overflow-hidden min-h-screen flex flex-col justify-center"
+      className="relative w-full bg-[#050505] text-[#ded8ce] py-16 border-t border-[#1c1b19] overflow-hidden min-h-screen flex flex-col justify-center items-center"
     >
       {/* Thanos Disintegration Overlay if Red Pill Chosen */}
       <AnimatePresence>
@@ -176,14 +277,22 @@ export function Contact() {
         )}
       </AnimatePresence>
 
-      {/* Cybernetic Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#121110_1px,transparent_1px),linear-gradient(to_bottom,#121110_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,#000_70%,transparent_100%)] pointer-events-none opacity-50" />
+      {/* Blue Pill Contact Modal if Blue Pill Chosen */}
+      <AnimatePresence>
+        {pillChosen === "blue" && (
+          <ContactModal onClose={() => setPillChosen(null)} />
+        )}
+      </AnimatePresence>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+      {/* Cybernetic Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#121110_1px,transparent_1px),linear-gradient(to_bottom,#121110_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none opacity-40" />
+
+      <div className="w-full relative z-10 flex flex-col items-center">
+        
         {/* Telemetry Header */}
         <motion.div
           {...fadeInUp}
-          className="flex items-center justify-between border-b border-[#24221f] pb-4 mb-10 font-mono text-xs text-[#8c867a]"
+          className="w-full max-w-7xl px-6 flex items-center justify-between border-b border-[#24221f] pb-4 mb-6 font-mono text-xs text-[#8c867a]"
         >
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
@@ -196,283 +305,86 @@ export function Contact() {
           </div>
         </motion.div>
 
-        {/* Headline */}
-        <motion.div {...fadeInUp} className="text-center mb-10">
-          <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">
-            // INTERACTIVE NEURAL CONSOLE
-          </span>
-          <h2 className="text-4xl sm:text-6xl font-serif text-white font-light tracking-tight uppercase">
-            Take The Pill
-          </h2>
-          <p className="text-sm font-sans text-[#a8a295] max-w-xl mx-auto mt-2">
-            Click directly on the animated glowing pills held in the robot's hands below.
-          </p>
-        </motion.div>
-
-        {/* Interactive 3D Robot Image & Pill Hotspots Stage */}
+        {/* FULL-WIDTH STAGE FOR THE ROBOT & PILLS */}
         <motion.div
           {...fadeInUp}
-          className="relative w-full max-w-5xl mx-auto bg-[#0a0a09] border border-[#24221f] rounded-xs overflow-hidden shadow-2xl group mb-12"
+          className="relative w-full max-w-7xl px-2 sm:px-6 mx-auto flex justify-center items-center"
         >
-          {/* Main Cybernetic Robot Image */}
-          <img
-            src="/robot_pills.png"
-            alt="Cybernetic Humanoid Robot holding Red and Blue Pills"
-            className="w-full h-auto object-cover filter contrast-110 brightness-95"
-          />
+          <div className="relative w-full bg-[#050505] border border-[#24221f] rounded-xs overflow-hidden shadow-2xl group">
+            
+            {/* Full Space Robot Image */}
+            <img
+              src="/robot_pills.png"
+              alt="Cybernetic Humanoid Robot holding Red and Blue Pills"
+              className="w-full h-auto object-contain block max-h-[85vh] mx-auto filter contrast-110 brightness-95"
+            />
 
-          {/* BLUE PILL INTERACTIVE OVERLAY (Robot's Right Hand / Viewer's Left) */}
-          <div className="absolute left-[17%] sm:left-[21%] top-[64%] sm:top-[66%] -translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center">
-            {/* Animated Pulsating Glowing Aura */}
-            <button
-              onClick={() => setPillChosen("blue")}
-              className="relative group/pill flex items-center justify-center cursor-pointer p-3 focus:outline-none"
-              title="Click to Take Blue Pill & Open Contact Channels"
-            >
-              {/* Outer Pulse Rings */}
-              <span className="absolute w-16 h-10 rounded-full bg-cyan-500/40 blur-md animate-ping pointer-events-none" />
-              <span className="absolute w-20 h-12 rounded-full bg-blue-600/30 blur-lg animate-pulse pointer-events-none" />
-
-              {/* Glowing Interactive Capsule Button */}
-              <span className="relative w-12 sm:w-16 h-6 sm:h-8 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-300 border-2 border-cyan-200 shadow-[0_0_25px_#06b6d4] group-hover/pill:scale-125 transition-transform duration-300 flex items-center justify-center">
-                <span className="w-full h-full rounded-full bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,transparent_70%)] opacity-80" />
-              </span>
-
-              {/* Tooltip Badge */}
-              <span className="absolute -top-10 whitespace-nowrap px-3 py-1 bg-[#090909]/95 border border-cyan-400 text-cyan-300 text-[10px] font-mono tracking-widest uppercase rounded-xs shadow-xl opacity-0 group-hover/pill:opacity-100 transition-opacity duration-300 pointer-events-none">
-                ✦ CLICK: TAKE BLUE PILL (GET IN TOUCH)
-              </span>
-            </button>
-          </div>
-
-          {/* RED PILL INTERACTIVE OVERLAY (Robot's Left Hand / Viewer's Right) */}
-          <div className="absolute right-[17%] sm:right-[21%] top-[64%] sm:top-[66%] translate-x-1/2 -translate-y-1/2 z-30 flex flex-col items-center">
-            {/* Animated Pulsating Glowing Aura */}
-            <button
-              onClick={() => setPillChosen("red")}
-              className="relative group/pill flex items-center justify-center cursor-pointer p-3 focus:outline-none"
-              title="Click to Take Red Pill & Disintegrate Website"
-            >
-              {/* Outer Pulse Rings */}
-              <span className="absolute w-16 h-10 rounded-full bg-red-500/40 blur-md animate-ping pointer-events-none" />
-              <span className="absolute w-20 h-12 rounded-full bg-red-600/30 blur-lg animate-pulse pointer-events-none" />
-
-              {/* Glowing Interactive Capsule Button */}
-              <span className="relative w-12 sm:w-16 h-6 sm:h-8 rounded-full bg-gradient-to-r from-red-500 via-rose-600 to-red-400 border-2 border-red-200 shadow-[0_0_25px_#ef4444] group-hover/pill:scale-125 transition-transform duration-300 flex items-center justify-center">
-                <span className="w-full h-full rounded-full bg-[radial-gradient(circle_at_30%_30%,#ffffff_0%,transparent_70%)] opacity-80" />
-              </span>
-
-              {/* Tooltip Badge */}
-              <span className="absolute -top-10 whitespace-nowrap px-3 py-1 bg-[#090909]/95 border border-red-500 text-red-300 text-[10px] font-mono tracking-widest uppercase rounded-xs shadow-xl opacity-0 group-hover/pill:opacity-100 transition-opacity duration-300 pointer-events-none">
-                ✦ CLICK: TAKE RED PILL (SEE YOU LATER)
-              </span>
-            </button>
-          </div>
-        </motion.div>
-
-        {/* Quick Action Button Bar */}
-        <motion.div {...fadeInUp} className="flex flex-wrap items-center justify-center gap-6 mb-16 font-mono">
-          <button
-            onClick={() => setPillChosen("blue")}
-            className="px-6 py-3.5 bg-[#0a141a] border border-cyan-500/60 rounded-full hover:border-cyan-400 hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] transition-all duration-300 flex items-center gap-3 cursor-pointer"
-          >
-            <span className="w-4 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#06b6d4]" />
-            <span className="text-xs text-white font-bold tracking-widest uppercase">
-              TAKE THE BLUE PILL // GET IN TOUCH
-            </span>
-          </button>
-
-          <button
-            onClick={() => setPillChosen("red")}
-            className="px-6 py-3.5 bg-[#170a0a] border border-red-500/60 rounded-full hover:border-red-500 hover:shadow-[0_0_25px_rgba(239,68,68,0.6)] transition-all duration-300 flex items-center gap-3 cursor-pointer"
-          >
-            <span className="w-4 h-2 rounded-full bg-red-500 shadow-[0_0_10px_#ef4444]" />
-            <span className="text-xs text-white font-bold tracking-widest uppercase">
-              TAKE THE RED PILL // SEE YOU LATER
-            </span>
-          </button>
-        </motion.div>
-
-        {/* Contact Dossier & Message Console */}
-        <motion.div
-          {...fadeInUp}
-          className="max-w-4xl mx-auto p-8 bg-[#12110f] border border-[#24221f] rounded-xs relative"
-        >
-          {/* Header */}
-          <div className="border-b border-[#24221f] pb-4 mb-6">
-            <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-1">
-              // ARCHITECT CONTACT CONSOLE
-            </span>
-            <h3 className="text-2xl font-serif text-white font-light">
-              Direct Communication Channels &amp; Inquiry Form
-            </h3>
-          </div>
-
-          {/* Quick Info Matrix */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 font-mono text-xs">
-            <a
-              href="mailto:raunakxshrivastva@gmail.com"
-              className="p-4 bg-[#0a0a09] border border-[#1e1c19] rounded-xs hover:border-cyan-400 transition-colors block group"
-            >
-              <span className="text-[10px] text-cyan-400 uppercase block mb-1">
-                ✉ EMAIL DIRECT
-              </span>
-              <strong className="text-white block truncate group-hover:text-cyan-300">
-                raunakxshrivastva@gmail.com
-              </strong>
-            </a>
-
-            <div className="p-4 bg-[#0a0a09] border border-[#1e1c19] rounded-xs">
-              <span className="text-[10px] text-amber-400 uppercase block mb-1">
-                📍 LOCATION
-              </span>
-              <strong className="text-white block">
-                Jaipur, Rajasthan, India
-              </strong>
-              <span className="text-[9px] text-[#706a61] block">
-                [26.9124° N, 75.7873° E]
-              </span>
-            </div>
-          </div>
-
-          {/* Social Profiles */}
-          <div className="mb-8">
-            <span className="text-[10px] font-mono text-[#8c867a] uppercase tracking-widest block mb-3">
-              // CONNECTED NETWORKS
-            </span>
-            <div className="flex flex-wrap gap-3 font-mono text-xs">
-              <a
-                href="https://github.com/raunakxshrivastva"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-[#090909] border border-[#24221f] hover:border-cyan-400 text-white rounded-xs transition-all flex items-center gap-2"
+            {/* BLUE PILL ANIMATED CLICK HOTSPOT (Targeted precisely over the Blue Pill in hand) */}
+            <div className="absolute left-[22.5%] top-[67.5%] -translate-x-1/2 -translate-y-1/2 z-30">
+              <button
+                onClick={() => setPillChosen("blue")}
+                className="relative group/pill flex items-center justify-center cursor-pointer p-4 focus:outline-none"
+                title="Click Blue Pill to Contact Me"
               >
-                <span>🐙 GitHub</span>
-                <span className="text-[10px] text-[#6b655b]">↗</span>
-              </a>
+                {/* Glowing Pulse Halo around the pill in hand */}
+                <span className="absolute w-14 sm:w-20 h-8 sm:h-10 rounded-full bg-cyan-400/50 blur-md animate-ping pointer-events-none" />
+                <span className="absolute w-16 sm:w-24 h-10 sm:h-12 rounded-full bg-blue-500/40 blur-lg animate-pulse pointer-events-none" />
 
-              <a
-                href="https://linkedin.com/in/raunakxshrivastva"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-[#090909] border border-[#24221f] hover:border-cyan-400 text-white rounded-xs transition-all flex items-center gap-2"
-              >
-                <span>💼 LinkedIn</span>
-                <span className="text-[10px] text-[#6b655b]">↗</span>
-              </a>
+                {/* Subtle Hover Target Box */}
+                <span className="w-12 sm:w-20 h-6 sm:h-9 rounded-full border-2 border-cyan-400/80 shadow-[0_0_30px_#06b6d4] group-hover/pill:scale-125 transition-transform duration-300 flex items-center justify-center bg-cyan-400/10" />
 
-              <a
-                href="https://instagram.com/raunakxshrivastva"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 bg-[#090909] border border-[#24221f] hover:border-cyan-400 text-white rounded-xs transition-all flex items-center gap-2"
-              >
-                <span>📸 Instagram</span>
-                <span className="text-[10px] text-[#6b655b]">↗</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Interactive Inquiry Form */}
-          <div className="pt-6 border-t border-[#1e1d1a]">
-            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest block mb-4">
-              // SEND DIRECT INQUIRY
-            </span>
-
-            {formSubmitted ? (
-              <div className="p-6 bg-cyan-950/30 border border-cyan-500/50 rounded-xs text-center font-mono space-y-2">
-                <span className="text-xs text-cyan-300 font-bold block">
-                  ✓ TELEMETRY TRANSMITTED SUCCESSFULLY
+                {/* Hover Tooltip Badge */}
+                <span className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 bg-[#090909]/95 border border-cyan-400 text-cyan-300 text-[10px] sm:text-xs font-mono tracking-widest uppercase rounded-xs shadow-2xl opacity-0 group-hover/pill:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  ✦ CLICK: TAKE BLUE PILL (GET IN TOUCH)
                 </span>
-                <p className="text-[11px] text-[#a8a295]">
-                  Thank you! Raunak will receive your message and respond shortly.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleFormSubmit} className="space-y-4 font-mono text-xs">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[10px] text-[#8c867a] uppercase mb-1">
-                      YOUR NAME
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Sam Altman"
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                      className="w-full px-3 py-2.5 bg-[#090909] border border-[#24221f] text-white rounded-xs focus:border-cyan-400 focus:outline-none transition-colors placeholder:text-[#4d4942]"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] text-[#8c867a] uppercase mb-1">
-                      YOUR EMAIL
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="you@domain.com"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      className="w-full px-3 py-2.5 bg-[#090909] border border-[#24221f] text-white rounded-xs focus:border-cyan-400 focus:outline-none transition-colors placeholder:text-[#4d4942]"
-                    />
-                  </div>
-                </div>
+              </button>
+            </div>
 
-                <div>
-                  <label className="block text-[10px] text-[#8c867a] uppercase mb-1">
-                    SUBJECT
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="AI Systems / Kernel Optimization / Research"
-                    value={formData.subject}
-                    onChange={(e) =>
-                      setFormData({ ...formData, subject: e.target.value })
-                    }
-                    className="w-full px-3 py-2.5 bg-[#090909] border border-[#24221f] text-white rounded-xs focus:border-cyan-400 focus:outline-none transition-colors placeholder:text-[#4d4942]"
-                  />
-                </div>
+            {/* RED PILL ANIMATED CLICK HOTSPOT (Targeted precisely over the Red Pill in hand) */}
+            <div className="absolute left-[77.5%] top-[67.5%] -translate-x-1/2 -translate-y-1/2 z-30">
+              <button
+                onClick={() => setPillChosen("red")}
+                className="relative group/pill flex items-center justify-center cursor-pointer p-4 focus:outline-none"
+                title="Click Red Pill to Disintegrate Matrix"
+              >
+                {/* Glowing Pulse Halo around the pill in hand */}
+                <span className="absolute w-14 sm:w-20 h-8 sm:h-10 rounded-full bg-red-500/50 blur-md animate-ping pointer-events-none" />
+                <span className="absolute w-16 sm:w-24 h-10 sm:h-12 rounded-full bg-red-600/40 blur-lg animate-pulse pointer-events-none" />
 
-                <div>
-                  <label className="block text-[10px] text-[#8c867a] uppercase mb-1">
-                    MESSAGE
-                  </label>
-                  <textarea
-                    rows={4}
-                    required
-                    placeholder="Write your message or inquiry here..."
-                    value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
-                    className="w-full px-3 py-2.5 bg-[#090909] border border-[#24221f] text-white rounded-xs focus:border-cyan-400 focus:outline-none transition-colors placeholder:text-[#4d4942] resize-none"
-                  />
-                </div>
+                {/* Subtle Hover Target Box */}
+                <span className="w-12 sm:w-20 h-6 sm:h-9 rounded-full border-2 border-red-500/80 shadow-[0_0_30px_#ef4444] group-hover/pill:scale-125 transition-transform duration-300 flex items-center justify-center bg-red-500/10" />
 
-                <button
-                  type="submit"
-                  className="w-full py-3 bg.171614 hover:bg-cyan-500 hover:text-black border border-[#383633] text-white text-xs font-bold uppercase tracking-widest rounded-xs transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <span>⚡ TRANSMIT MESSAGE</span>
-                </button>
-              </form>
-            )}
+                {/* Hover Tooltip Badge */}
+                <span className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 bg-[#090909]/95 border border-red-500 text-red-300 text-[10px] sm:text-xs font-mono tracking-widest uppercase rounded-xs shadow-2xl opacity-0 group-hover/pill:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  ✦ CLICK: TAKE RED PILL (SEE YOU LATER)
+                </span>
+              </button>
+            </div>
+
+            {/* ALSO MAKE THE TEXT AREAS INTERACTIVE ON THE IMAGE */}
+            <div 
+              onClick={() => setPillChosen("blue")}
+              className="absolute left-[8%] sm:left-[12%] top-[25%] sm:top-[28%] w-[35%] h-[20%] z-20 cursor-pointer"
+              title="Click to Take Blue Pill"
+            />
+            <div 
+              onClick={() => setPillChosen("red")}
+              className="absolute right-[8%] sm:right-[12%] top-[25%] sm:top-[28%] w-[35%] h-[20%] z-20 cursor-pointer"
+              title="Click to Take Red Pill"
+            />
+
           </div>
         </motion.div>
 
         {/* Footer */}
         <motion.footer
           {...fadeInUp}
-          className="mt-20 pt-8 border-t border-[#1c1b19] flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs text-[#6b655b]"
+          className="w-full max-w-7xl px-6 mt-8 pt-6 border-t border-[#1c1b19] flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs text-[#6b655b]"
         >
           <p>© {new Date().getFullYear()} Raunak Shrivastva. All rights reserved.</p>
           <p>Jaipur, Rajasthan, India [26.9124° N, 75.7873° E]</p>
         </motion.footer>
+
       </div>
     </section>
   );
