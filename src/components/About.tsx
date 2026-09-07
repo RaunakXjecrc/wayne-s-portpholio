@@ -77,8 +77,8 @@ export function About() {
               {/* Card Image Container with Hover Scale */}
               <div className="relative w-full flex-1 overflow-hidden rounded-xs bg-black mb-4 min-h-[240px]">
                 <img 
-                  src="/raunak_photo.png" 
-                  alt="Jaipur Telemetry Coordinates" 
+                  src="/jecrc_university.jpg" 
+                  alt="JECRC University Campus Jaipur" 
                   className="w-full h-full object-cover filter contrast-110 brightness-95 group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
 
