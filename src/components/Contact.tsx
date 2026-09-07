@@ -76,7 +76,7 @@ function SmoothDisintegrationOverlay({ onReset }: { onReset: () => void }) {
   );
 }
 
-// Blue Pill Holographic Contact Modal Component
+// Redesigned Futuristic Blue Pill Holographic Contact Modal Component
 function ContactModal({ onClose }: { onClose: () => void }) {
   const [copied, setCopied] = useState(false);
 
@@ -91,107 +91,190 @@ function ContactModal({ onClose }: { onClose: () => void }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[9990] bg-black/85 flex items-center justify-center p-4 backdrop-blur-md cursor-pointer"
+      className="fixed inset-0 z-[9990] bg-black/90 flex items-center justify-center p-4 sm:p-6 backdrop-blur-xl cursor-pointer overflow-y-auto"
       onClick={onClose}
     >
       <motion.div
-        initial={{ scale: 0.9, y: 20 }}
-        animate={{ scale: 1, y: 0 }}
-        exit={{ scale: 0.9, y: 20 }}
-        className="relative max-w-2xl w-full bg-[#0d131a] border border-cyan-500/50 p-8 rounded-xs shadow-[0_0_50px_rgba(6,182,212,0.4)] text-[#ded8ce] font-mono cursor-default"
+        initial={{ scale: 0.92, y: 25, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        exit={{ scale: 0.92, y: 25, opacity: 0 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="relative max-w-4xl w-full bg-[#030914] border border-cyan-500/40 rounded-[20px] p-6 sm:p-10 shadow-[0_0_80px_rgba(6,182,212,0.35)] text-[#ded8ce] font-sans cursor-default overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close X */}
+        {/* Cosmic Ambient Blue Nebula Energy Background */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(ellipse_at_top_right,rgba(6,182,212,0.25),transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[radial-gradient(ellipse_at_bottom_left,rgba(59,130,246,0.15),transparent_70%)] pointer-events-none" />
+
+        {/* 4-Point Cosmic Star Burst Graphic Top Right */}
+        <div className="absolute top-6 right-8 pointer-events-none flex flex-col items-center">
+          <svg className="w-10 h-10 text-cyan-400 opacity-80 animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
+          </svg>
+        </div>
+
+        {/* Vertical Left Label */}
+        <div className="hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 flex-col items-center gap-6 font-mono text-[9px] tracking-[0.4em] text-cyan-500/60 uppercase writing-mode-vertical pointer-events-none">
+          <span>✦</span>
+          <span>C O N N E C T</span>
+          <span>✦</span>
+        </div>
+
+        {/* Close X Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-cyan-400 hover:text-white text-sm font-bold p-1 cursor-pointer"
+          className="absolute top-6 right-6 text-cyan-400/80 hover:text-white text-base font-mono font-bold p-2 transition-colors cursor-pointer z-20"
+          title="Close Modal"
         >
           ✕
         </button>
 
-        <div className="flex items-center gap-3 text-cyan-400 text-xs tracking-widest uppercase mb-4">
-          <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
-          <span>// BLUE PILL ACTIVATED: ARCHITECT CONTACT</span>
-        </div>
-
-        <h3 className="text-3xl font-serif text-white font-light mb-6">
-          Raunak Shrivastva — Direct Channels
-        </h3>
-
-        {/* Email Box */}
-        <div className="p-4 bg-[#080d12] border border-cyan-500/40 rounded-xs mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <span className="text-[10px] text-cyan-400 uppercase tracking-widest block mb-1">
-              ✉ DIRECT EMAIL
-            </span>
-            <span className="text-base text-white font-bold tracking-wide select-all">
-              raunakxshrivastva@gmail.com
-            </span>
+        {/* Header Block */}
+        <div className="relative z-10 mb-8 pl-0 lg:pl-6">
+          <div className="flex items-center justify-between font-mono text-xs text-cyan-400 tracking-widest uppercase mb-3">
+            <span>04 / 04</span>
+            <span className="text-cyan-500/80">// GET IN TOUCH</span>
           </div>
 
-          <button
-            onClick={copyEmail}
-            className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-black font-bold text-xs uppercase tracking-widest rounded-xs transition-colors cursor-pointer whitespace-nowrap"
-          >
-            {copied ? "✓ COPIED!" : "COPY EMAIL"}
-          </button>
-        </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+            <div className="lg:col-span-8">
+              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight leading-none mb-3">
+                Let's Build Something{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-200 font-normal">
+                  Extraordinary
+                </span>
+              </h2>
+              <p className="text-xs sm:text-sm font-mono text-[#8e9bb0] max-w-xl leading-relaxed">
+                Have a project in mind, a question, or just want to say hi? I'm always open to new opportunities, collaborations, and interesting conversations.
+              </p>
+            </div>
 
-        {/* Location & Details */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 text-xs">
-          <div className="p-4 bg-[#080d12] border border-[#1e2630] rounded-xs">
-            <span className="text-[10px] text-amber-400 uppercase tracking-widest block mb-1">
-              📍 OPERATING REGION
-            </span>
-            <strong className="text-white block text-sm">Jaipur, Rajasthan, India</strong>
-            <span className="text-[10px] text-[#706a61] block pt-1">
-              [26.9124° N, 75.7873° E]
-            </span>
-          </div>
-
-          <div className="p-4 bg-[#080d12] border border-[#1e2630] rounded-xs">
-            <span className="text-[10px] text-cyan-400 uppercase tracking-widest block mb-1">
-              ⚡ STATUS &amp; AVAILABILITY
-            </span>
-            <strong className="text-white block text-sm">Open for AI &amp; Systems Roles</strong>
-            <span className="text-[10px] text-[#706a61] block pt-1">
-              Active (2026) · Remote / On-Site
-            </span>
+            <div className="lg:col-span-4 border-l border-cyan-500/30 pl-4 py-1 font-mono text-[10px] text-[#7888a3] tracking-widest uppercase leading-relaxed hidden sm:block">
+              "GOOD IDEAS START WITH A SIMPLE CONVERSATION."
+            </div>
           </div>
         </div>
 
-        {/* Social Profiles */}
-        <div className="pt-4 border-t border-[#1e2630] flex flex-wrap gap-3 text-xs">
-          <a
-            href="https://github.com/raunakxshrivastva"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 bg-[#080d12] border border-cyan-500/40 hover:border-cyan-400 text-white rounded-xs transition-colors flex items-center gap-2"
-          >
-            <span>🐙 GitHub</span>
-            <span className="text-[10px] text-cyan-400">↗</span>
-          </a>
+        {/* Direct Email Card (Full Width Cybernetic Glass Box) */}
+        <div className="relative z-10 pl-0 lg:pl-6 mb-6">
+          <div className="p-6 sm:p-7 bg-[#061221]/90 border border-cyan-500/30 rounded-[16px] shadow-[0_0_30px_rgba(6,182,212,0.15)] backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-6 hover:border-cyan-400/60 transition-colors">
+            <div className="space-y-1 text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-2 font-mono text-xs text-cyan-400 tracking-widest uppercase">
+                <span>✈ DIRECT EMAIL</span>
+              </div>
+              <div className="text-lg sm:text-2xl font-mono text-white font-bold tracking-wide select-all">
+                raunakxshrivastva@gmail.com
+              </div>
+              <div className="font-mono text-[10px] text-[#637594] tracking-widest uppercase">
+                I'LL REPLY AS SOON AS POSSIBLE ▪
+              </div>
+            </div>
 
-          <a
-            href="https://linkedin.com/in/raunakxshrivastva"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 bg-[#080d12] border border-cyan-500/40 hover:border-cyan-400 text-white rounded-xs transition-colors flex items-center gap-2"
-          >
-            <span>💼 LinkedIn</span>
-            <span className="text-[10px] text-cyan-400">↗</span>
-          </a>
-
-          <a
-            href="https://instagram.com/raunakxshrivastva"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 bg-[#080d12] border border-cyan-500/40 hover:border-cyan-400 text-white rounded-xs transition-colors flex items-center gap-2"
-          >
-            <span>📸 Instagram</span>
-            <span className="text-[10px] text-cyan-400">↗</span>
-          </a>
+            {/* Beveled Metallic Copy Button */}
+            <button
+              onClick={copyEmail}
+              className="group relative px-6 py-3 bg-[#0a1e36] hover:bg-cyan-400 border border-cyan-500/60 hover:border-cyan-300 text-cyan-200 hover:text-black font-mono font-bold text-xs uppercase tracking-widest rounded-full shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300 cursor-pointer flex items-center gap-2.5 whitespace-nowrap active:scale-95"
+            >
+              <span>{copied ? "✓ COPIED TO CLIPBOARD" : "COPY EMAIL"}</span>
+              <span className="text-sm">📋</span>
+            </button>
+          </div>
         </div>
+
+        {/* Middle Row: 2 Cybernetic Telemetry Cards */}
+        <div className="relative z-10 pl-0 lg:pl-6 grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 font-mono">
+          {/* Left Card: Operating Region with Globe Graphic Overlay */}
+          <div className="relative p-6 bg-[#061221]/90 border border-cyan-500/30 rounded-[16px] overflow-hidden hover:border-cyan-400/60 transition-colors">
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 text-xs text-cyan-400 tracking-widest uppercase mb-2">
+                <span>📍 OPERATING REGION</span>
+              </div>
+              <strong className="text-base text-white block mb-1 font-sans">
+                Jaipur, Rajasthan, India
+              </strong>
+              <span className="text-xs text-[#637594] block">
+                26.9124° N, 75.7873° E
+              </span>
+            </div>
+
+            {/* Wireframe Holographic Globe Overlay on Right */}
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 w-24 h-24 pointer-events-none opacity-25">
+              <svg viewBox="0 0 100 100" className="w-full h-full text-cyan-400 stroke-current fill-none">
+                <circle cx="50" cy="50" r="40" strokeWidth="1" />
+                <ellipse cx="50" cy="50" rx="40" ry="18" strokeWidth="1" />
+                <ellipse cx="50" cy="50" rx="18" ry="40" strokeWidth="1" />
+                <line x1="10" y1="50" x2="90" y2="50" strokeWidth="1" />
+                <line x1="50" y1="10" x2="50" y2="90" strokeWidth="1" />
+                <circle cx="65" cy="40" r="3" fill="#06b6d4" />
+              </svg>
+            </div>
+          </div>
+
+          {/* Right Card: Status & Availability with Line Graph Overlay */}
+          <div className="relative p-6 bg-[#061221]/90 border border-cyan-500/30 rounded-[16px] overflow-hidden hover:border-cyan-400/60 transition-colors">
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 text-xs text-cyan-400 tracking-widest uppercase mb-2">
+                <span>⚡ STATUS &amp; AVAILABILITY</span>
+              </div>
+              <strong className="text-base text-white block mb-1 font-sans">
+                Open for AI &amp; Systems Roles
+              </strong>
+              <span className="text-xs text-[#637594] block">
+                Active (2026) · Remote / On-Site
+              </span>
+            </div>
+
+            {/* Glowing Pulse Wave Telemetry Line Graph on Right */}
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 w-28 h-12 pointer-events-none opacity-35">
+              <svg viewBox="0 0 120 40" className="w-full h-full text-cyan-400 stroke-current fill-none" strokeWidth="1.5">
+                <path d="M0 20 Q 20 20, 30 10 T 50 30 T 70 5 T 90 25 T 120 20" strokeDasharray="2 2" />
+                <circle cx="90" cy="25" r="3" fill="#06b6d4" className="animate-ping" />
+                <circle cx="90" cy="25" r="2" fill="#38bdf8" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Social Pill Link Buttons */}
+        <div className="relative z-10 pl-0 lg:pl-6 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-cyan-500/20 font-mono text-xs">
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="https://github.com/raunakxshrivastva"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-[#061221] hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white rounded-full transition-all duration-300 flex items-center gap-2"
+            >
+              <span>🐙 GitHub</span>
+              <span className="text-[10px] text-cyan-400">↗</span>
+            </a>
+
+            <a
+              href="https://linkedin.com/in/raunakxshrivastva"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-[#061221] hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white rounded-full transition-all duration-300 flex items-center gap-2"
+            >
+              <span>💼 LinkedIn</span>
+              <span className="text-[10px] text-cyan-400">↗</span>
+            </a>
+
+            <a
+              href="https://instagram.com/raunakxshrivastva"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-[#061221] hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white rounded-full transition-all duration-300 flex items-center gap-2"
+            >
+              <span>📸 Instagram</span>
+              <span className="text-[10px] text-cyan-400">↗</span>
+            </a>
+          </div>
+
+          <div className="flex items-center gap-2 text-cyan-500/60 text-[10px] tracking-widest">
+            <span>SYS_ONLINE</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+          </div>
+        </div>
+
       </motion.div>
     </motion.div>
   );
@@ -212,7 +295,7 @@ export function Contact() {
         )}
       </AnimatePresence>
 
-      {/* Blue Pill Contact Modal if Blue Pill Chosen */}
+      {/* Redesigned Blue Pill Contact Modal if Blue Pill Chosen */}
       <AnimatePresence>
         {pillChosen === "blue" && (
           <ContactModal onClose={() => setPillChosen(null)} />
@@ -270,7 +353,7 @@ export function Contact() {
                 className="relative group/pill flex items-center justify-center cursor-pointer p-2 focus:outline-none"
                 title="Click Blue Pill to Contact Me"
               >
-                {/* Seamless Glow aura directly over the pill in hand - NO mismatching outer ring */}
+                {/* Seamless Glow aura directly over the pill in hand */}
                 <span className="absolute w-12 sm:w-16 h-6 sm:h-8 rounded-full bg-cyan-400/70 blur-md animate-pulse pointer-events-none group-hover/pill:scale-125 transition-transform" />
                 <span className="absolute w-16 sm:w-20 h-8 sm:h-10 rounded-full bg-blue-500/40 blur-lg animate-ping pointer-events-none" />
 
@@ -291,7 +374,7 @@ export function Contact() {
                 className="relative group/pill flex items-center justify-center cursor-pointer p-2 focus:outline-none"
                 title="Click Red Pill to Disintegrate Matrix"
               >
-                {/* Seamless Glow aura directly over the pill in hand - NO mismatching outer ring */}
+                {/* Seamless Glow aura directly over the pill in hand */}
                 <span className="absolute w-12 sm:w-16 h-6 sm:h-8 rounded-full bg-red-500/70 blur-md animate-pulse pointer-events-none group-hover/pill:scale-125 transition-transform" />
                 <span className="absolute w-16 sm:w-20 h-8 sm:h-10 rounded-full bg-red-600/40 blur-lg animate-ping pointer-events-none" />
 
