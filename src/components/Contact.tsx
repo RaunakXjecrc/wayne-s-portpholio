@@ -145,8 +145,8 @@ export function Contact() {
               or front-end engineering, my inbox is open.
             </p>
 
-            {/* Email Copy Pill Button */}
-            <div className="inline-block">
+            {/* Email Copy Pill & Resume Download Button Container */}
+            <div className="flex flex-wrap items-center gap-4">
               <button
                 onClick={copyEmail}
                 className="group relative w-full sm:w-auto px-7 py-4 bg-[#141414]/90 hover:bg-[#1f1f1f] border border-white/20 hover:border-white/40 rounded-full text-left transition-colors duration-300 flex items-center justify-between gap-6 shadow-2xl cursor-pointer active:scale-95"
@@ -169,6 +169,19 @@ export function Contact() {
                   </svg>
                 </div>
               </button>
+
+              <a
+                href="/resume.pdf"
+                download="Raunak_Shrivastva_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-4 bg-[#141414]/90 hover:bg-white hover:text-black border border-white/20 hover:border-white/40 text-white font-mono font-bold text-xs uppercase tracking-wider rounded-full transition-all duration-300 flex items-center gap-3 shadow-2xl cursor-pointer active:scale-95"
+              >
+                <span>📄 Resume</span>
+                <span className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-xs">
+                  ↓
+                </span>
+              </a>
             </div>
 
             {/* Direct Channels Footer */}
