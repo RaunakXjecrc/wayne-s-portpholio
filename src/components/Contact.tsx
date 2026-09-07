@@ -1,69 +1,6 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
-
-// Helper component for floating zero-G Antigravity Physics on hover
-function AntigravityElement({
-  children,
-  className = "",
-  intensity = 1,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  intensity?: number;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  // Motion values for smooth 3D translation & rotation
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const liftZ = useMotionValue(0);
-
-  // Physics springs for natural anti-gravity drift and smooth return
-  const springConfig = { stiffness: 120, damping: 14, mass: 0.6 };
-  const x = useSpring(mouseX, springConfig);
-  const y = useSpring(mouseY, springConfig);
-  const z = useSpring(liftZ, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    // Calculate displacement toward cursor
-    const offsetX = (e.clientX - centerX) * 0.18 * intensity;
-    const offsetY = (e.clientY - centerY) * 0.18 * intensity;
-
-    mouseX.set(offsetX);
-    mouseY.set(offsetY);
-    liftZ.set(12 * intensity); // Gentle zero-G lift
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-    liftZ.set(0);
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        x,
-        y,
-        translateZ: z,
-        transformStyle: "preserve-3d",
-      }}
-      className={`transition-shadow duration-300 ${className}`}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 export function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -129,7 +66,13 @@ export function Contact() {
       {/* =========================================================================
           LAYER 0: Underlying Background Text Watermark (z-index: 0)
           ========================================================================= */}
-      <div className="absolute inset-0 z-0 flex flex-col justify-end items-center overflow-hidden pointer-events-none select-none pb-4 opacity-40">
+      <div className="absolute inset-0 z-0 flex flex-col justify-between items-center overflow-hidden pointer-events-none select-none py-4 opacity-40">
+        <h1
+          className="w-full text-center font-black uppercase text-white/[0.04] leading-[0.8] tracking-tight"
+          style={{ fontSize: "clamp(6rem, 18vw, 22rem)" }}
+        >
+          CONNECT
+        </h1>
         <h1
           className="w-full text-center font-black uppercase text-white/[0.04] leading-[0.8] tracking-tight"
           style={{ fontSize: "clamp(6rem, 18vw, 22rem)" }}
@@ -142,7 +85,7 @@ export function Contact() {
           LAYER 1: Continuous Flashlight Spotlight Text Reveal Overlay (z-index: 1)
           ========================================================================= */}
       <div
-        className="absolute inset-0 z-[1] flex flex-col justify-end items-center overflow-hidden pointer-events-none select-none pb-4"
+        className="absolute inset-0 z-[1] flex flex-col justify-between items-center overflow-hidden pointer-events-none select-none py-4"
         style={{
           WebkitMaskImage:
             "radial-gradient(circle 220px at var(--mouse-x) var(--mouse-y), black 20%, transparent 100%)",
@@ -156,54 +99,24 @@ export function Contact() {
         >
           CONNECT
         </h1>
+        <h1
+          className="w-full text-center font-black uppercase text-white leading-[0.8] tracking-tight drop-shadow-[0_0_35px_rgba(255,255,255,0.7)]"
+          style={{ fontSize: "clamp(6rem, 18vw, 22rem)" }}
+        >
+          CONNECT
+        </h1>
       </div>
 
       {/* =========================================================================
           LAYER 10: Interactive Foreground Content (z-index: 10)
           ========================================================================= */}
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col justify-between min-h-[85vh] pointer-events-auto">
-        {/* Top Header Row with Social & Resume Navigation */}
-        <header className="w-full flex items-center justify-between font-mono text-xs text-[#a09a8e] mb-8 sm:mb-12">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="tracking-widest uppercase text-[#c5beb3]">
-              04 / GET IN TOUCH
-            </span>
-          </div>
-
-          <div className="flex items-center gap-6 text-xs sm:text-sm font-medium">
-            <a
-              href="mailto:raunakxshrivastva@gmail.com"
-              className="hover:text-white transition-colors"
-            >
-              Mail
-            </a>
-            <a
-              href="https://www.linkedin.com/in/raunak-shrivastva-319551427/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://x.com/home"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors"
-            >
-              𝕏
-            </a>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1 bg-white/10 hover:bg-white hover:text-black border border-white/20 text-white rounded-full transition-all text-xs font-mono"
-            >
-              Resume ↗
-            </a>
-          </div>
-        </header>
+        {/* BIG CENTERED TITLE FOR GET IN TOUCH */}
+        <div className="w-full text-center mb-8 sm:mb-12 pt-4">
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white font-sans drop-shadow-lg">
+            GET IN TOUCH
+          </h2>
+        </div>
 
         {/* Main Content Grid: Left Info & Right Glassmorphic Form Card */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center my-auto">
@@ -215,8 +128,8 @@ export function Contact() {
               <span>Available for Research &amp; Collaborations</span>
             </div>
 
-            {/* Antigravity Headline */}
-            <AntigravityElement intensity={1.2}>
+            {/* Static Headline (No hover movement) */}
+            <div>
               <h2 className="text-5xl sm:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight leading-[0.88] font-sans drop-shadow-2xl">
                 LET’S BUILD
                 <br />
@@ -224,7 +137,7 @@ export function Contact() {
                 <br />
                 INTEGRATED.
               </h2>
-            </AntigravityElement>
+            </div>
 
             {/* Subtitle */}
             <p className="text-sm sm:text-base text-[#a8a295] max-w-lg leading-relaxed font-sans">
@@ -232,11 +145,11 @@ export function Contact() {
               or front-end engineering, my inbox is open.
             </p>
 
-            {/* Antigravity Email Copy Pill Button */}
-            <AntigravityElement intensity={1.5} className="inline-block">
+            {/* Email Copy Pill Button */}
+            <div className="inline-block">
               <button
                 onClick={copyEmail}
-                className="group relative w-full sm:w-auto px-7 py-4 bg-[#141414]/90 hover:bg-[#1f1f1f] border border-white/20 hover:border-white/40 rounded-full text-left transition-all duration-300 flex items-center justify-between gap-6 shadow-2xl cursor-pointer active:scale-95"
+                className="group relative w-full sm:w-auto px-7 py-4 bg-[#141414]/90 hover:bg-[#1f1f1f] border border-white/20 hover:border-white/40 rounded-full text-left transition-colors duration-300 flex items-center justify-between gap-6 shadow-2xl cursor-pointer active:scale-95"
               >
                 <div className="space-y-0.5">
                   <div className="text-base sm:text-lg font-mono font-bold text-white tracking-wide">
@@ -256,10 +169,10 @@ export function Contact() {
                   </svg>
                 </div>
               </button>
-            </AntigravityElement>
+            </div>
 
             {/* Direct Channels Footer */}
-            <AntigravityElement intensity={0.8} className="pt-4">
+            <div className="pt-4">
               <div className="border-t border-white/10 pt-6 space-y-3 font-mono text-xs">
                 <div className="text-[#7a7469] uppercase tracking-widest font-bold">
                   Direct Channels
@@ -306,117 +219,115 @@ export function Contact() {
                   </div>
                 </div>
               </div>
-            </AntigravityElement>
+            </div>
           </div>
 
           {/* Right Column: Glassmorphic Contact Form Card */}
           <div className="lg:col-span-6">
-            <AntigravityElement intensity={1.1}>
-              <div className="relative bg-white/[0.03] backdrop-blur-2xl border border-white/15 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-[0_30px_80px_rgba(0,0,0,0.6)] space-y-6">
-                {/* 4-Point Sparkle Star Top/Bottom Accent */}
-                <div className="absolute -bottom-3 -right-3 text-white/40 pointer-events-none">
-                  <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
-                  </svg>
+            <div className="relative bg-white/[0.03] backdrop-blur-2xl border border-white/15 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-[0_30px_80px_rgba(0,0,0,0.6)] space-y-6">
+              {/* 4-Point Sparkle Star Top/Bottom Accent */}
+              <div className="absolute -bottom-3 -right-3 text-white/40 pointer-events-none">
+                <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
+                </svg>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-5 font-sans">
+                {/* Name Input */}
+                <div className="space-y-1.5">
+                  <label className="block font-mono text-xs text-[#a8a295]">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Name"
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    className="w-full px-4 py-3 bg-black/40 border border-white/15 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/50 transition-colors font-sans text-sm"
+                  />
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5 font-sans">
-                  {/* Name Input */}
-                  <div className="space-y-1.5">
-                    <label className="block font-mono text-xs text-[#a8a295]">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Name"
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                      className="w-full px-4 py-3 bg-black/40 border border-white/15 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/50 transition-colors font-sans text-sm"
-                    />
-                  </div>
+                {/* Email Input */}
+                <div className="space-y-1.5">
+                  <label className="block font-mono text-xs text-[#a8a295]">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="Text-only placeholder"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    className="w-full px-4 py-3 bg-black/40 border border-white/15 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/50 transition-colors font-sans text-sm"
+                  />
+                </div>
 
-                  {/* Email Input */}
-                  <div className="space-y-1.5">
-                    <label className="block font-mono text-xs text-[#a8a295]">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="Text-only placeholder"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      className="w-full px-4 py-3 bg-black/40 border border-white/15 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/50 transition-colors font-sans text-sm"
-                    />
-                  </div>
+                {/* Topic Select */}
+                <div className="space-y-1.5">
+                  <label className="block font-mono text-xs text-[#a8a295]">
+                    Topic
+                  </label>
+                  <select
+                    value={formData.topic}
+                    onChange={(e) =>
+                      setFormData({ ...formData, topic: e.target.value })
+                    }
+                    className="w-full px-4 py-3 bg-black/80 border border-white/15 rounded-xl text-white focus:outline-none focus:border-white/50 transition-colors font-sans text-sm appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>
+                      Select Topic
+                    </option>
+                    <option value="model-finetuning">
+                      Model Fine-Tuning &amp; Deep Learning
+                    </option>
+                    <option value="autonomous-systems">
+                      Autonomous Systems &amp; CUDA
+                    </option>
+                    <option value="frontend">
+                      Front-End &amp; UI Architecture
+                    </option>
+                    <option value="research">Research &amp; Collaboration</option>
+                    <option value="other">Other Inquiry</option>
+                  </select>
+                </div>
 
-                  {/* Topic Select */}
-                  <div className="space-y-1.5">
-                    <label className="block font-mono text-xs text-[#a8a295]">
-                      Topic
-                    </label>
-                    <select
-                      value={formData.topic}
-                      onChange={(e) =>
-                        setFormData({ ...formData, topic: e.target.value })
-                      }
-                      className="w-full px-4 py-3 bg-black/80 border border-white/15 rounded-xl text-white focus:outline-none focus:border-white/50 transition-colors font-sans text-sm appearance-none cursor-pointer"
-                    >
-                      <option value="" disabled>
-                        Select Topic
-                      </option>
-                      <option value="model-finetuning">
-                        Model Fine-Tuning &amp; Deep Learning
-                      </option>
-                      <option value="autonomous-systems">
-                        Autonomous Systems &amp; CUDA
-                      </option>
-                      <option value="frontend">
-                        Front-End &amp; UI Architecture
-                      </option>
-                      <option value="research">Research &amp; Collaboration</option>
-                      <option value="other">Other Inquiry</option>
-                    </select>
-                  </div>
+                {/* Message Textarea */}
+                <div className="space-y-1.5">
+                  <label className="block font-mono text-xs text-[#a8a295]">
+                    Message
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    placeholder="Message"
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                    className="w-full px-4 py-3 bg-black/40 border border-white/15 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/50 transition-colors font-sans text-sm resize-none"
+                  />
+                </div>
 
-                  {/* Message Textarea */}
-                  <div className="space-y-1.5">
-                    <label className="block font-mono text-xs text-[#a8a295]">
-                      Message
-                    </label>
-                    <textarea
-                      required
-                      rows={4}
-                      placeholder="Message"
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                      className="w-full px-4 py-3 bg-black/40 border border-white/15 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-white/50 transition-colors font-sans text-sm resize-none"
-                    />
-                  </div>
+                {/* Card Bottom Row: Response Time & Submit Button */}
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
+                  <span className="text-[#8c867a]">
+                    Response time: ~24 hours
+                  </span>
 
-                  {/* Card Bottom Row: Response Time & Submit Button */}
-                  <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
-                    <span className="text-[#8c867a]">
-                      Response time: ~24 hours
-                    </span>
-
-                    <button
-                      type="submit"
-                      className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-[#eae6df] text-black font-bold rounded-xl transition-all duration-200 cursor-pointer shadow-lg active:scale-95 text-sm"
-                    >
-                      {formSubmitted ? "Dispatch Sent! ✓" : "Send Dispatch"}
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </AntigravityElement>
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-[#eae6df] text-black font-bold rounded-xl transition-all duration-200 cursor-pointer shadow-lg active:scale-95 text-sm"
+                  >
+                    {formSubmitted ? "Dispatch Sent! ✓" : "Send Dispatch"}
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
 
