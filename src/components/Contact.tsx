@@ -31,7 +31,7 @@ function DisintegrationOverlay({ onReset }: { onReset: () => void }) {
     window.addEventListener("resize", handleResize);
 
     // Generate thousands of dust particles
-    const particleCount = 7500;
+    const particleCount = 8000;
     const particles: Array<{
       x: number;
       y: number;
@@ -49,7 +49,7 @@ function DisintegrationOverlay({ onReset }: { onReset: () => void }) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 5 + 3, // Rightward Thanos drift
+        vx: (Math.random() - 0.5) * 6 + 3.5, // Rightward Thanos drift
         vy: (Math.random() - 0.5) * 4 - 2, // Upward drift
         size: Math.random() * 2.8 + 0.5,
         color: colors[Math.floor(Math.random() * colors.length)],
@@ -268,7 +268,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full bg-[#050505] text-[#ded8ce] py-16 border-t border-[#1c1b19] overflow-hidden min-h-screen flex flex-col justify-center items-center"
+      className="relative w-full bg-[#050505] text-[#ded8ce] py-12 border-t border-[#1c1b19] overflow-hidden min-h-screen flex flex-col justify-center items-center px-0"
     >
       {/* Thanos Disintegration Overlay if Red Pill Chosen */}
       <AnimatePresence>
@@ -285,14 +285,14 @@ export function Contact() {
       </AnimatePresence>
 
       {/* Cybernetic Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#121110_1px,transparent_1px),linear-gradient(to_bottom,#121110_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none opacity-40" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#121110_1px,transparent_1px),linear-gradient(to_bottom,#121110_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_100%_100%_at_50%_50%,#000_80%,transparent_100%)] pointer-events-none opacity-40" />
 
       <div className="w-full relative z-10 flex flex-col items-center">
         
         {/* Telemetry Header */}
         <motion.div
           {...fadeInUp}
-          className="w-full max-w-7xl px-6 flex items-center justify-between border-b border-[#24221f] pb-4 mb-6 font-mono text-xs text-[#8c867a]"
+          className="w-full max-w-7xl px-6 flex items-center justify-between border-b border-[#24221f] pb-3 mb-4 font-mono text-xs text-[#8c867a]"
         >
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
@@ -305,33 +305,33 @@ export function Contact() {
           </div>
         </motion.div>
 
-        {/* FULL-WIDTH STAGE FOR THE ROBOT & PILLS */}
+        {/* 100% FULL-WIDTH STAGE FOR THE ROBOT & PILLS */}
         <motion.div
           {...fadeInUp}
-          className="relative w-full max-w-7xl px-2 sm:px-6 mx-auto flex justify-center items-center"
+          className="relative w-full px-0 mx-auto flex justify-center items-center overflow-hidden"
         >
-          <div className="relative w-full bg-[#050505] border border-[#24221f] rounded-xs overflow-hidden shadow-2xl group">
+          <div className="relative w-full bg-black border-y border-[#24221f] overflow-hidden shadow-2xl group flex items-center justify-center">
             
-            {/* Full Space Robot Image */}
+            {/* Edge-to-Edge Full-Width Cybernetic Robot Image */}
             <img
               src="/robot_pills.png"
               alt="Cybernetic Humanoid Robot holding Red and Blue Pills"
-              className="w-full h-auto object-contain block max-h-[85vh] mx-auto filter contrast-110 brightness-95"
+              className="w-full h-auto object-cover block min-w-full max-h-[88vh] mx-auto filter contrast-110 brightness-95"
             />
 
-            {/* BLUE PILL ANIMATED CLICK HOTSPOT (Targeted precisely over the Blue Pill in hand) */}
-            <div className="absolute left-[22.5%] top-[67.5%] -translate-x-1/2 -translate-y-1/2 z-30">
+            {/* BLUE PILL ANIMATED CLICK HOTSPOT (Positioned EXACTLY on top of the Blue Pill in hand) */}
+            <div className="absolute left-[24.5%] top-[66%] -translate-x-1/2 -translate-y-1/2 z-30">
               <button
                 onClick={() => setPillChosen("blue")}
                 className="relative group/pill flex items-center justify-center cursor-pointer p-4 focus:outline-none"
                 title="Click Blue Pill to Contact Me"
               >
-                {/* Glowing Pulse Halo around the pill in hand */}
-                <span className="absolute w-14 sm:w-20 h-8 sm:h-10 rounded-full bg-cyan-400/50 blur-md animate-ping pointer-events-none" />
-                <span className="absolute w-16 sm:w-24 h-10 sm:h-12 rounded-full bg-blue-500/40 blur-lg animate-pulse pointer-events-none" />
+                {/* Glowing Pulse Halo centered precisely on hand pill */}
+                <span className="absolute w-14 sm:w-20 h-7 sm:h-10 rounded-full bg-cyan-400/60 blur-md animate-ping pointer-events-none" />
+                <span className="absolute w-18 sm:w-24 h-9 sm:h-12 rounded-full bg-blue-500/50 blur-lg animate-pulse pointer-events-none" />
 
-                {/* Subtle Hover Target Box */}
-                <span className="w-12 sm:w-20 h-6 sm:h-9 rounded-full border-2 border-cyan-400/80 shadow-[0_0_30px_#06b6d4] group-hover/pill:scale-125 transition-transform duration-300 flex items-center justify-center bg-cyan-400/10" />
+                {/* Hotspot Target Box over image pill */}
+                <span className="w-12 sm:w-18 h-5 sm:h-8 rounded-full border-2 border-cyan-300 shadow-[0_0_35px_#06b6d4] group-hover/pill:scale-130 transition-transform duration-300 flex items-center justify-center bg-cyan-400/20" />
 
                 {/* Hover Tooltip Badge */}
                 <span className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 bg-[#090909]/95 border border-cyan-400 text-cyan-300 text-[10px] sm:text-xs font-mono tracking-widest uppercase rounded-xs shadow-2xl opacity-0 group-hover/pill:opacity-100 transition-opacity duration-300 pointer-events-none">
@@ -340,19 +340,19 @@ export function Contact() {
               </button>
             </div>
 
-            {/* RED PILL ANIMATED CLICK HOTSPOT (Targeted precisely over the Red Pill in hand) */}
-            <div className="absolute left-[77.5%] top-[67.5%] -translate-x-1/2 -translate-y-1/2 z-30">
+            {/* RED PILL ANIMATED CLICK HOTSPOT (Positioned EXACTLY on top of the Red Pill in hand) */}
+            <div className="absolute left-[75.5%] top-[66%] -translate-x-1/2 -translate-y-1/2 z-30">
               <button
                 onClick={() => setPillChosen("red")}
                 className="relative group/pill flex items-center justify-center cursor-pointer p-4 focus:outline-none"
                 title="Click Red Pill to Disintegrate Matrix"
               >
-                {/* Glowing Pulse Halo around the pill in hand */}
-                <span className="absolute w-14 sm:w-20 h-8 sm:h-10 rounded-full bg-red-500/50 blur-md animate-ping pointer-events-none" />
-                <span className="absolute w-16 sm:w-24 h-10 sm:h-12 rounded-full bg-red-600/40 blur-lg animate-pulse pointer-events-none" />
+                {/* Glowing Pulse Halo centered precisely on hand pill */}
+                <span className="absolute w-14 sm:w-20 h-7 sm:h-10 rounded-full bg-red-500/60 blur-md animate-ping pointer-events-none" />
+                <span className="absolute w-18 sm:w-24 h-9 sm:h-12 rounded-full bg-red-600/50 blur-lg animate-pulse pointer-events-none" />
 
-                {/* Subtle Hover Target Box */}
-                <span className="w-12 sm:w-20 h-6 sm:h-9 rounded-full border-2 border-red-500/80 shadow-[0_0_30px_#ef4444] group-hover/pill:scale-125 transition-transform duration-300 flex items-center justify-center bg-red-500/10" />
+                {/* Hotspot Target Box over image pill */}
+                <span className="w-12 sm:w-18 h-5 sm:h-8 rounded-full border-2 border-red-400 shadow-[0_0_35px_#ef4444] group-hover/pill:scale-130 transition-transform duration-300 flex items-center justify-center bg-red-500/20" />
 
                 {/* Hover Tooltip Badge */}
                 <span className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 bg-[#090909]/95 border border-red-500 text-red-300 text-[10px] sm:text-xs font-mono tracking-widest uppercase rounded-xs shadow-2xl opacity-0 group-hover/pill:opacity-100 transition-opacity duration-300 pointer-events-none">
@@ -361,16 +361,16 @@ export function Contact() {
               </button>
             </div>
 
-            {/* ALSO MAKE THE TEXT AREAS INTERACTIVE ON THE IMAGE */}
+            {/* CLICKABLE REGIONS OVER ENTIRE LEFT / RIGHT SIDES OF THE IMAGE */}
             <div 
               onClick={() => setPillChosen("blue")}
-              className="absolute left-[8%] sm:left-[12%] top-[25%] sm:top-[28%] w-[35%] h-[20%] z-20 cursor-pointer"
-              title="Click to Take Blue Pill"
+              className="absolute left-0 top-0 w-1/2 h-full z-20 cursor-pointer"
+              title="Click anywhere on Left side to Take Blue Pill"
             />
             <div 
               onClick={() => setPillChosen("red")}
-              className="absolute right-[8%] sm:right-[12%] top-[25%] sm:top-[28%] w-[35%] h-[20%] z-20 cursor-pointer"
-              title="Click to Take Red Pill"
+              className="absolute right-0 top-0 w-1/2 h-full z-20 cursor-pointer"
+              title="Click anywhere on Right side to Take Red Pill"
             />
 
           </div>
@@ -379,7 +379,7 @@ export function Contact() {
         {/* Footer */}
         <motion.footer
           {...fadeInUp}
-          className="w-full max-w-7xl px-6 mt-8 pt-6 border-t border-[#1c1b19] flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs text-[#6b655b]"
+          className="w-full max-w-7xl px-6 mt-6 pt-4 flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs text-[#6b655b]"
         >
           <p>© {new Date().getFullYear()} Raunak Shrivastva. All rights reserved.</p>
           <p>Jaipur, Rajasthan, India [26.9124° N, 75.7873° E]</p>
