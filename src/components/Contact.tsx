@@ -129,13 +129,7 @@ export function Contact() {
       {/* =========================================================================
           LAYER 0: Underlying Background Text Watermark (z-index: 0)
           ========================================================================= */}
-      <div className="absolute inset-0 z-0 flex flex-col justify-between items-center overflow-hidden pointer-events-none select-none py-4 opacity-40">
-        <h1
-          className="w-full text-center font-black uppercase text-white/[0.04] leading-[0.8] tracking-tight"
-          style={{ fontSize: "clamp(6rem, 18vw, 22rem)" }}
-        >
-          CONNECT
-        </h1>
+      <div className="absolute inset-0 z-0 flex flex-col justify-end items-center overflow-hidden pointer-events-none select-none pb-4 opacity-40">
         <h1
           className="w-full text-center font-black uppercase text-white/[0.04] leading-[0.8] tracking-tight"
           style={{ fontSize: "clamp(6rem, 18vw, 22rem)" }}
@@ -148,7 +142,7 @@ export function Contact() {
           LAYER 1: Continuous Flashlight Spotlight Text Reveal Overlay (z-index: 1)
           ========================================================================= */}
       <div
-        className="absolute inset-0 z-[1] flex flex-col justify-between items-center overflow-hidden pointer-events-none select-none py-4"
+        className="absolute inset-0 z-[1] flex flex-col justify-end items-center overflow-hidden pointer-events-none select-none pb-4"
         style={{
           WebkitMaskImage:
             "radial-gradient(circle 220px at var(--mouse-x) var(--mouse-y), black 20%, transparent 100%)",
@@ -156,12 +150,6 @@ export function Contact() {
             "radial-gradient(circle 220px at var(--mouse-x) var(--mouse-y), black 20%, transparent 100%)",
         }}
       >
-        <h1
-          className="w-full text-center font-black uppercase text-white leading-[0.8] tracking-tight drop-shadow-[0_0_35px_rgba(255,255,255,0.7)]"
-          style={{ fontSize: "clamp(6rem, 18vw, 22rem)" }}
-        >
-          CONNECT
-        </h1>
         <h1
           className="w-full text-center font-black uppercase text-white leading-[0.8] tracking-tight drop-shadow-[0_0_35px_rgba(255,255,255,0.7)]"
           style={{ fontSize: "clamp(6rem, 18vw, 22rem)" }}
